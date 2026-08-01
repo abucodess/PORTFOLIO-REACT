@@ -65,8 +65,7 @@ export default function About() {
               <div className="flex flex-col gap-3 border-t border-line pt-5 font-mono text-xs text-mist">
                 <div className="flex items-center gap-2">
                   <FiBookOpen className="text-violet-400" />
-                  🎓 BCA • Jain University (Online)
-💻 Full Stack Development & AI Engineering
+                   BCA • Jain University (Online)
                 </div>
                 <div className="flex items-center gap-2">
                   <FiMapPin className="text-violet-400" />
