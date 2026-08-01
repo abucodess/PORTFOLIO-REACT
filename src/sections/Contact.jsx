@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiCheck, FiMail } from "react-icons/fi";
 import SectionHeading from "../components/UI/SectionHeading";
+import emailjs from "@emailjs/browser";
 import MagneticButton from "../components/UI/MagneticButton";
 
 function FloatingField({ label, type = "text", textarea = false, value, onChange, name }) {
@@ -48,12 +49,32 @@ export default function Contact() {
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("sending");
-    // Backend wiring pending — simulated submit for now.
-    setTimeout(() => setStatus("sent"), 1400);
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  setStatus("sending");
+
+  const templateParams = {
+    name: form.name,
+    email: form.email,
+    message: form.message,
   };
+
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    })
+    .catch((error) => {
+      console.log(error);
+      setStatus("idle");
+    });
+};
 
   return (
     <section id="contact" className="section-pad relative z-10">

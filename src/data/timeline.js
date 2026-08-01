@@ -1,42 +1,42 @@
 export const timeline = [
   {
-    year: "2024",
+    year: "2025",
     title: "Started B.Tech in Computer Science",
-    place: "Al Ameen Engineering College, KTU",
+    place: "Al Ameen Engineering College (KTU)",
     description:
-      "Began the CSE program under APJ Abdul Kalam Technological University, building a foundation in programming, systems, and mathematics.",
+      "Began studying Computer Science, where I built my foundation in programming, problem-solving, and software development.",
     type: "education",
   },
   {
-    year: "2025",
-    title: "Went deep on React",
-    place: "Self-directed",
+    year: "Jun 2026",
+    title: "Chose a Different Path",
+    place: "Career Decision",
     description:
-      "Moved from static pages to component architecture — hooks, context, routing — and started shipping real interfaces instead of tutorials.",
+      "Left my B.Tech program to pursue software development full-time while enrolling in an online BCA at Jain University. Committed to learning through real-world projects and continuous self-study.",
     type: "milestone",
   },
   {
-    year: "2025",
-    title: "Built TalkToMe AI",
-    place: "Personal project",
+    year: "2026",
+    title: "Built Production Projects",
+    place: "Independent Developer",
     description:
-      "Combined speech recognition with an interactive dashboard to explore what an AI communication assistant could feel like in the browser.",
+      "Developed multiple real-world React applications including a Netflix Clone, Bike Mode, To-Do List, Habit Tracker, and TalkToMe AI, focusing on writing production-quality code and building a strong portfolio.",
     type: "project",
   },
   {
     year: "2026",
-    title: "Shipped Bike Mode",
-    place: "Client project",
+    title: "Built My Personal Brand",
+    place: "GitHub & Portfolio",
     description:
-      "Designed and built a production-ready business site for a Royal Enfield workshop — real client, real deadline, real users.",
-    type: "project",
+      "Launched my interactive developer portfolio, published projects on GitHub, deployed applications to Vercel, and started building a professional online presence.",
+    type: "milestone",
   },
   {
     year: "Now",
-    title: "Full-stack & AI, in progress",
-    place: "Al Ameen Engineering College",
+    title: "Full Stack Developer & AI Engineer",
+    place: "Online BCA • Jain University",
     description:
-      "Deepening backend skills toward Python/Django, and studying the fundamentals of machine learning to move from web developer to AI engineer.",
+      "Currently pursuing an online BCA while deepening my expertise in Full Stack Development, Data Structures & Algorithms, backend technologies, and Artificial Intelligence through hands-on projects.",
     type: "current",
   },
 ];
