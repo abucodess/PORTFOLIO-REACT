@@ -8,7 +8,7 @@ Designed with a premium black-and-purple aesthetic, immersive animations, and a 
 
 ## 🌐 Live Demo
 
-🔗 **Portfolio:** https://portfolio-react-taupe-pi.vercel.app/
+🔗 **Portfolio:** portfolio-abu-xi.vercel.app
 
 ---
 
