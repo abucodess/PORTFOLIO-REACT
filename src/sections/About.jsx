@@ -50,7 +50,7 @@ export default function About() {
                   Abubacker
                 </p>
                 <p className="font-mono text-xs text-violet-300">
-                  @ Al Ameen Engineering College
+                  @ Betterinu 
                 </p>
               </div>
 
