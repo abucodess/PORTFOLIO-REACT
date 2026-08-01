@@ -8,23 +8,23 @@ Designed with a premium black-and-purple aesthetic, immersive animations, and a 
 
 ## 🌐 Live Demo
 
-🔗 **Portfolio:** 
-portfolio-abu-xi.vercel.app
+🔗 **Portfolio:**
+[Visit Portfolio Website](https://portfolio-abu-xi.vercel.app)
 
 ---
 
 ## ✨ Features
 
-- 🎨 Modern black & purple UI
-- ⚡ Smooth page transitions
-- 🖱️ Interactive custom cursor
-- ✨ Scroll-triggered animations
-- 📱 Fully responsive design
-- 🚀 Fast performance with Vite
-- 💼 Project showcase
-- 🧑‍💻 Skills & technology section
-- 📬 Contact section
-- 🌙 Premium developer experience
+* 🎨 Modern black & purple UI
+* ⚡ Smooth page transitions
+* 🖱️ Interactive custom cursor
+* ✨ Scroll-triggered animations
+* 📱 Fully responsive design
+* 🚀 Fast performance with Vite
+* 💼 Project showcase
+* 🧑‍💻 Skills & technology section
+* 📬 Contact section
+* 🌙 Premium developer experience
 
 ---
 
@@ -32,24 +32,24 @@ portfolio-abu-xi.vercel.app
 
 ### Frontend
 
-- React
-- Vite
-- Tailwind CSS
-- JavaScript
+* React
+* Vite
+* Tailwind CSS
+* JavaScript
 
 ### Animations
 
-- Framer Motion
-- GSAP
+* Framer Motion
+* GSAP
 
 ### Icons & UI
 
-- React Icons
-- Lucide React
+* React Icons
+* Lucide React
 
 ### Deployment
 
-- Vercel
+* Vercel
 
 ---
 
@@ -59,10 +59,14 @@ portfolio-abu-xi.vercel.app
 
 A Netflix-inspired streaming interface featuring Firebase Authentication and live movie data from the TMDB API.
 
-**Tech**
-- React
-- Firebase Authentication
-- TMDB API
+**Tech Stack**
+
+* React
+* Firebase Authentication
+* TMDB API
+* Tailwind CSS
+
+🔗 [View Source Code](https://github.com/abubacker8593/Netflix-clone)
 
 ---
 
@@ -70,10 +74,12 @@ A Netflix-inspired streaming interface featuring Firebase Authentication and liv
 
 An AI-powered communication assistant using speech recognition and an interactive dashboard to improve communication skills.
 
-**Tech**
-- React
-- Speech Recognition
-- AI Integration
+**Tech Stack**
+
+* React
+* Speech Recognition
+* AI Integration
+* Tailwind CSS
 
 ---
 
@@ -81,10 +87,11 @@ An AI-powered communication assistant using speech recognition and an interactiv
 
 A professional business website developed for a Royal Enfield workshop with a modern responsive interface.
 
-**Tech**
-- React
-- Tailwind CSS
-- Responsive Design
+**Tech Stack**
+
+* React
+* Tailwind CSS
+* Responsive Design
 
 ---
 
@@ -92,19 +99,31 @@ A professional business website developed for a Royal Enfield workshop with a mo
 
 A productivity application supporting task creation, editing, deletion, completion tracking, and persistent local storage.
 
+**Tech Stack**
+
+* React
+* JavaScript
+* Local Storage
+* Tailwind CSS
+
 ---
 
 ### 📅 Habit Tracker
 
 A clean and intuitive habit tracker designed to help users build consistency through daily streaks and progress tracking.
 
+**Tech Stack**
+
+* React
+* JavaScript
+* Local Storage
+* Tailwind CSS
+
 ---
 
 ## 📸 Preview
 
-> Add screenshots of your portfolio here.
-
-Example:
+Add screenshots of your portfolio here:
 
 ```
 /public/screenshots/home.png
@@ -116,25 +135,25 @@ Example:
 
 ## 🚀 Installation
 
-Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/abubacker8593/PORTFOLIO-REACT.git
 ```
 
-Navigate into the project
+Navigate into the project:
 
 ```bash
 cd PORTFOLIO-REACT
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Run the development server
+Run the development server:
 
 ```bash
 npm run dev
@@ -144,7 +163,7 @@ npm run dev
 
 ## 📁 Folder Structure
 
-```
+```text
 src/
 │
 ├── assets/
@@ -160,11 +179,11 @@ src/
 
 ## 📬 Contact
 
-📧 Email: abubackermax10@gmail.com
+📧 Email: [abubackermax10@gmail.com](mailto:abubackermax10@gmail.com)
 
-💼 LinkedIn: https://linkedin.com/in/your-linkedin
+💼 LinkedIn: [LinkedIn Profile](https://linkedin.com/in/your-linkedin)
 
-🐙 GitHub: https://github.com/abubacker8593
+🐙 GitHub: [github.com/abubacker8593](https://github.com/abubacker8593)
 
 ---
 
