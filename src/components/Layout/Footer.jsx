@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from "react-icons/fi";
+import { profile } from "../../data/profile";
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const socials = [
-  { icon: FiGithub, href: "#", label: "GitHub" },
-  { icon: FiLinkedin, href: "#", label: "LinkedIn" },
-  { icon: FiMail, href: "mailto:hello@example.com", label: "Email" },
+  { icon: FiGithub, href: profile.socials.github, label: "GitHub", external: true },
+  { icon: FiLinkedin, href: profile.socials.linkedin, label: "LinkedIn", external: true },
+  { icon: FiMail, href: profile.socials.email, label: "Email", external: false },
 ];
 
 export default function Footer() {
@@ -19,15 +22,17 @@ export default function Footer() {
             Abu<span className="text-violet-400">.</span>
           </span>
           <span className="font-mono text-xs text-mist-dim">
-            © {new Date().getFullYear()} · Built with React
+            © {CURRENT_YEAR} · Built with React
           </span>
         </div>
 
         <div className="flex items-center gap-4">
-          {socials.map(({ icon: Icon, href, label }) => (
+          {socials.map(({ icon: Icon, href, label, external }) => (
             <a
               key={label}
               href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
               data-cursor="link"
               aria-label={label}
               className="grid h-11 w-11 place-items-center rounded-full border border-line text-mist transition-colors hover:border-violet-400/60 hover:text-violet-300"
@@ -37,6 +42,7 @@ export default function Footer() {
           ))}
 
           <motion.button
+            type="button"
             data-cursor="button"
             onClick={scrollTop}
             whileHover={{ y: -3 }}

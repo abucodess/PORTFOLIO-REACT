@@ -1,104 +1,119 @@
-import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { FiCode, FiGitBranch, FiLayers, FiTrendingUp } from "react-icons/fi";
 import SectionHeading from "../components/UI/SectionHeading";
+import AnimatedCounter from "../components/UI/AnimatedCounter";
+import { stats } from "../data/timeline";
 
-const badges = [
-  { icon: FiCode, label: "Projects Completed", value: "3+" },
-  { icon: FiGitBranch, label: "GitHub Repositories", value: "12+" },
-  { icon: FiLayers, label: "Technologies Learned", value: "15+" },
-  { icon: FiTrendingUp, label: "Coding Streak", value: "180d" },
-];
+const WEEKS = 28;
+const DAYS = 7;
 
-function useHeatmap() {
-  return useMemo(() => {
-    return Array.from({ length: 17 * 7 }).map(() => {
-      const r = Math.random();
-      if (r > 0.82) return 3;
-      if (r > 0.62) return 2;
-      if (r > 0.4) return 1;
-      return 0;
-    });
-  }, []);
-}
+// Deterministic contribution levels so React Compiler remains 100% pure
+const HEATMAP_LEVELS = Array.from({ length: WEEKS }, (_, w) =>
+  Array.from({ length: DAYS }, (_, d) => {
+    const seed = Math.sin((w + 1) * 12.9898 + (d + 1) * 78.233) * 43758.5453;
+    const r = seed - Math.floor(seed);
+    const boost = w > WEEKS * 0.5 ? 0.18 : 0;
+    const v = r + boost;
+    if (v > 0.85) return 4;
+    if (v > 0.65) return 3;
+    if (v > 0.42) return 2;
+    if (v > 0.22) return 1;
+    return 0;
+  })
+);
 
-const intensity = [
-  "bg-surface-2",
-  "bg-violet-900/70",
-  "bg-violet-600/80",
-  "bg-violet-400",
+const levelClass = [
+  "bg-white/[0.04]",
+  "bg-violet-950/80",
+  "bg-violet-800/80",
+  "bg-violet-600",
+  "bg-violet-400 shadow-[0_0_8px_rgba(192,132,252,0.7)]",
 ];
 
 export default function Achievements() {
-  const cells = useHeatmap();
-
   return (
-    <section className="section-pad relative z-10">
-      <div className="container-px mx-auto max-w-6xl">
+    <section className="section-pad container-px relative cv-auto">
+      <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Achievements"
-          title="Consistency compounds."
-          description="A snapshot of the momentum behind the milestones — shipped work, and the daily reps that got me there."
+          eyebrow="05 / Consistency"
+          title="Momentum built one commit at a time."
+          subtitle="Numbers don't tell the whole story — but consistency always leaves a trail."
         />
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-          <div className="grid grid-cols-2 gap-5">
-            {badges.map((b, i) => (
-              <motion.div
-                key={b.label}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="glow-border rounded-2xl border border-line bg-surface/60 p-6"
-              >
-                <b.icon className="text-violet-400" size={20} />
-                <p className="mt-4 font-display text-2xl font-semibold text-soft-white">
-                  {b.value}
-                </p>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-mist-dim">
-                  {b.label}
-                </p>
-              </motion.div>
-            ))}
+        {/* Counters */}
+        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="glass glow-border rounded-3xl p-7"
+            >
+              <div className="font-display text-4xl font-bold tracking-tight text-soft-white sm:text-5xl">
+                <AnimatedCounter value={s.value} suffix={s.suffix} />
+              </div>
+              <p className="mt-2 font-mono text-xs uppercase tracking-widest text-mist">
+                {s.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Contribution graph */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="glass glow-border mt-8 overflow-hidden rounded-3xl p-6 sm:p-8"
+        >
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-violet-400">
+                // Activity Matrix
+              </p>
+              <h3 className="mt-1 font-display text-lg font-semibold text-soft-white">
+                Daily Building &amp; Learning Streak
+              </h3>
+            </div>
+            <a
+              href="https://github.com/abubacker8593"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="GitHub"
+              className="font-mono text-xs text-violet-300 underline-offset-4 hover:underline"
+            >
+              @abubacker8593 ↗
+            </a>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="glow-border flex flex-col justify-between rounded-2xl border border-line bg-surface/60 p-6"
-          >
-            <div className="flex items-center justify-between">
-              <p className="font-mono text-xs uppercase tracking-wider text-mist-dim">
-                Coding activity
-              </p>
-              <p className="font-mono text-[11px] text-mist-dim">last 17 weeks</p>
-            </div>
-
-            <div className="mt-5 grid grid-flow-col grid-rows-7 gap-1.5">
-              {cells.map((v, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: (i % 17) * 0.02 }}
-                  className={`h-3 w-3 rounded-[3px] ${intensity[v]}`}
-                />
+          <div className="overflow-x-auto pb-2">
+            <div className="inline-flex gap-1.5">
+              {HEATMAP_LEVELS.map((week, wIdx) => (
+                <div key={wIdx} className="flex flex-col gap-1.5">
+                  {week.map((lvl, dIdx) => (
+                    <div
+                      key={dIdx}
+                      className={`h-3.5 w-3.5 rounded-[4px] transition duration-300 hover:scale-125 ${levelClass[lvl]}`}
+                    />
+                  ))}
+                </div>
               ))}
             </div>
+          </div>
 
-            <div className="mt-5 flex items-center justify-end gap-2 font-mono text-[11px] text-mist-dim">
-              Less
-              {intensity.map((c, i) => (
-                <span key={i} className={`h-3 w-3 rounded-[3px] ${c}`} />
+          <div className="mt-4 flex items-center justify-between font-mono text-[11px] text-mist-dim">
+            <span>Consistent shipping &amp; DSA practice</span>
+            <div className="flex items-center gap-1.5">
+              <span>Less</span>
+              {levelClass.map((c, i) => (
+                <span key={i} className={`h-2.5 w-2.5 rounded-xs ${c}`} />
               ))}
-              More
+              <span>More</span>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

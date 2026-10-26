@@ -6,7 +6,7 @@ import { skillGroups } from "../data/skills";
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-pad relative z-10">
+    <section id="skills" className="section-pad cv-auto relative z-10">
       <div className="container-px mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)] lg:items-center">
           <SectionHeading

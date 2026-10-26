@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 
-export default function SectionHeading({ eyebrow, title, description, align = "left" }) {
+export default function SectionHeading({ eyebrow, title, description, subtitle, align = "left" }) {
+  const body = description || subtitle;
+
   return (
     <div className={align === "center" ? "text-center" : "text-left"}>
       {eyebrow && (
@@ -23,7 +25,7 @@ export default function SectionHeading({ eyebrow, title, description, align = "l
       >
         {title}
       </motion.h2>
-      {description && (
+      {body && (
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +33,7 @@ export default function SectionHeading({ eyebrow, title, description, align = "l
           transition={{ duration: 0.6, delay: 0.15 }}
           className={`mt-5 max-w-xl text-mist ${align === "center" ? "mx-auto" : ""}`}
         >
-          {description}
+          {body}
         </motion.p>
       )}
     </div>

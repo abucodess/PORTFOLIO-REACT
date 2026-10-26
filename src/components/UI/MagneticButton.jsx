@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 export default function MagneticButton({
   children,
-  as: Tag = "button",
+  as = "button",
   variant = "primary",
   className = "",
   cursorType = "button",
   ...props
 }) {
   const ref = useRef(null);
-  const MotionTag = typeof Tag === "string" ? motion[Tag] || motion.button : motion(Tag);
+  const MotionComponent = as === "a" ? motion.a : motion.button;
 
   const handleMove = (e) => {
     const el = ref.current;
@@ -18,7 +18,7 @@ export default function MagneticButton({
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
   };
 
   const handleLeave = () => {
@@ -26,7 +26,7 @@ export default function MagneticButton({
   };
 
   const base =
-    "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-mono text-sm tracking-wide transition-colors duration-300 will-change-transform";
+    "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-mono text-sm tracking-wide transition-colors duration-200 will-change-transform whitespace-nowrap shrink-0";
   const styles = {
     primary:
       "bg-violet-600 text-soft-white shadow-[0_0_30px_rgba(124,58,237,0.45)] hover:bg-violet-500",
@@ -38,19 +38,18 @@ export default function MagneticButton({
     <span
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="inline-block transition-transform duration-200 ease-out"
-      style={{ transitionTimingFunction: "cubic-bezier(0.2, 1, 0.3, 1)" }}
+      className="inline-block transition-transform duration-150 ease-out"
       ref={ref}
     >
-      <MotionTag
+      <MotionComponent
         data-cursor={cursorType}
         data-magnetic="true"
-        whileTap={{ scale: 0.94 }}
+        whileTap={{ scale: 0.96 }}
         className={`${base} ${styles[variant]} ${className}`}
         {...props}
       >
         {children}
-      </MotionTag>
+      </MotionComponent>
     </span>
   );
 }

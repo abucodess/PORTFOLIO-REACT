@@ -6,7 +6,7 @@ import { stats } from "../data/timeline";
 
 export default function About() {
   return (
-    <section id="about" className="section-pad relative z-10">
+    <section id="about" className="section-pad cv-auto relative z-10">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="About"
@@ -15,7 +15,7 @@ export default function About() {
         />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-          {/* Profile card */}
+          {/* Profile card with original /images/profile.jpg and no switch portrait feature */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -25,11 +25,13 @@ export default function About() {
           >
             <div className="absolute -right-16 -top-16 z-0 h-56 w-56 rounded-full bg-violet-600/20 blur-[80px]" />
 
-            {/* photo */}
+            {/* Original photo */}
             <div className="relative aspect-[4/3.9] w-full overflow-hidden">
               <img
                 src="/images/profile.jpg"
                 alt="Abubacker, smiling, seated"
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover object-top"
                 style={{ filter: "grayscale(0.35) contrast(1.08) saturate(1.1)" }}
               />
@@ -41,7 +43,6 @@ export default function About() {
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-violet-900/10" />
-              <div className="noise-overlay-local opacity-[0.08]" />
             </div>
 
             <div className="relative flex flex-col gap-6 p-8 pt-6">
@@ -50,7 +51,7 @@ export default function About() {
                   Abubacker
                 </p>
                 <p className="font-mono text-xs text-violet-300">
-                  @ Betterinu 
+                  @ Betterinu
                 </p>
               </div>
 
@@ -65,7 +66,7 @@ export default function About() {
               <div className="flex flex-col gap-3 border-t border-line pt-5 font-mono text-xs text-mist">
                 <div className="flex items-center gap-2">
                   <FiBookOpen className="text-violet-400" />
-                   BCA • Jain University (Online)
+                  BCA • Jain University (Online)
                 </div>
                 <div className="flex items-center gap-2">
                   <FiMapPin className="text-violet-400" />
