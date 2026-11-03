@@ -15,24 +15,31 @@ export default function SkillOrbit() {
       </div>
 
       {/* orbiting icons */}
-      <div className="absolute inset-0 animate-spin-slower">
-        {orbitIcons.map((Icon, i) => {
-          const angle = (i / orbitIcons.length) * 2 * Math.PI;
-          const radius = 140;
-          const x = Math.cos(angle) * radius;
-          const y = Math.sin(angle) * radius;
-          return (
-            <div
-              key={i}
-              className="absolute left-1/2 top-1/2 grid h-11 w-11 place-items-center rounded-full border border-line bg-surface-2 text-violet-300 shadow-[0_0_20px_rgba(124,58,237,0.25)]"
-              style={{ transform: `translate(${x}px, ${y}px) translate(-50%, -50%)` }}
-            >
-              <div className="animate-spin-slower" style={{ animationDirection: "reverse" }}>
-                <Icon size={18} />
+      <div className="absolute inset-0 scale-[0.82] sm:scale-100">
+        <div className="h-full w-full animate-spin-slower will-change-transform">
+          {orbitIcons.map((Icon, i) => {
+            const angle = (i / orbitIcons.length) * 2 * Math.PI;
+            const radius = 140;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            return (
+              <div
+                key={i}
+                className="absolute left-1/2 top-1/2 grid h-11 w-11 place-items-center rounded-full border border-line bg-surface-2 text-violet-300 shadow-[0_0_20px_rgba(124,58,237,0.25)]"
+                style={{
+                  transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`,
+                }}
+              >
+                <div
+                  className="animate-spin-slower will-change-transform"
+                  style={{ animationDirection: "reverse" }}
+                >
+                  <Icon size={18} />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

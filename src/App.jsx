@@ -74,13 +74,14 @@ export default function App() {
       loadProjectDetailPage();
     };
 
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(preloadAll, { timeout: 1500 });
-      return () => window.cancelIdleCallback(id);
-    } else {
-      const timer = setTimeout(preloadAll, 600);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(preloadAll, { timeout: 2000 });
+      } else {
+        preloadAll();
+      }
+    }, 2200);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleSelectProject = useCallback((slug) => {

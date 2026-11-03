@@ -13,8 +13,7 @@ const socials = [
 ];
 
 export default function Footer() {
-  const scrollTop = () =>
-    document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="relative z-10 border-t border-line">

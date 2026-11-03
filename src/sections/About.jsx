@@ -45,25 +45,17 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-violet-900/10" />
             </div>
 
-            <div className="relative flex flex-col gap-6 p-8 pt-6">
+            <div className="relative flex flex-col gap-5 p-7 pt-5">
               <div>
                 <p className="font-display text-xl font-semibold text-soft-white">
                   Aboobacker
                 </p>
-                <p className="font-mono text-xs text-violet-300">
-                  Frontend Developer Intern @ BetterInu
+                <p className="mt-0.5 font-mono text-xs text-violet-300">
+                  Frontend Developer &amp; Software Engineer
                 </p>
               </div>
 
-              <p className="text-mist">
-                Results-driven Frontend Developer specializing in React.js,
-                JavaScript (ES6+), TypeScript, and Tailwind CSS. Experienced in
-                shipping production client applications — from full-featured
-                e-commerce platforms with role-based access control to
-                real-time POS billing systems.
-              </p>
-
-              <div className="flex flex-col gap-3 border-t border-line pt-5 font-mono text-xs text-mist">
+              <div className="flex flex-col gap-3 border-t border-line pt-4 font-mono text-xs text-mist">
                 <div className="flex items-center gap-2">
                   <FiBookOpen className="text-violet-400" />
                   BCA • JAIN (Deemed-to-be University)

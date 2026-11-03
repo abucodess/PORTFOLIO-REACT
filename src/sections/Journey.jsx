@@ -177,7 +177,7 @@ export default function Journey() {
                 Aboobacker
               </p>
               <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-violet-300">
-                Frontend &amp; React Developer
+                Frontend Developer &amp; Software Engineer
               </p>
             </div>
 

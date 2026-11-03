@@ -12,6 +12,7 @@ import {
   FiMaximize2,
   FiX,
   FiMonitor,
+  FiStar,
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { projects } from "../data/projects";
@@ -31,13 +32,24 @@ export default function ProjectDetailPage({
   }, [project?.slug]);
 
   useEffect(() => {
-    if (!lightboxShot) return;
+    if (!lightboxShot || !Array.isArray(project?.screenshots)) return;
+    const shots = project.screenshots;
     const onKeyDown = (e) => {
-      if (e.key === "Escape") setLightboxShot(null);
+      if (e.key === "Escape") {
+        setLightboxShot(null);
+      } else if (e.key === "ArrowRight") {
+        const idx = shots.findIndex((s) => s.src === lightboxShot.src);
+        const next = shots[(idx + 1) % shots.length];
+        setLightboxShot(next);
+      } else if (e.key === "ArrowLeft") {
+        const idx = shots.findIndex((s) => s.src === lightboxShot.src);
+        const prev = shots[(idx - 1 + shots.length) % shots.length];
+        setLightboxShot(prev);
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [lightboxShot]);
+  }, [lightboxShot, project?.screenshots]);
 
   if (!project) return null;
 
@@ -47,7 +59,12 @@ export default function ProjectDetailPage({
     ? project.screenshots[activeShotIndex] || project.screenshots[0]
     : null;
 
-  const currentIndex = projects.findIndex((p) => p.slug === project.slug);
+  const currentIndex = Math.max(
+    0,
+    projects.findIndex(
+      (p) => p.slug.toLowerCase() === project.slug.toLowerCase()
+    )
+  );
   const prevProject =
     projects[(currentIndex - 1 + projects.length) % projects.length];
   const nextProject = projects[(currentIndex + 1) % projects.length];
@@ -587,6 +604,54 @@ export default function ProjectDetailPage({
           </div>
         </section>
 
+        {/* VERIFIED CLIENT REVIEW FOR THIS PROJECT */}
+        {project.testimonial && (
+          <section className="mt-14">
+            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-surface/75 p-7 sm:p-9">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="inline-flex items-center gap-2 rounded-md border border-violet-400/30 bg-violet-950/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-violet-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <span>06 // CLIENT TESTIMONIAL</span>
+                </div>
+
+                <div
+                  className="flex items-center gap-1 text-amber-400"
+                  aria-label="5 out of 5 stars"
+                >
+                  {Array.from({ length: project.testimonial.rating || 5 }).map(
+                    (_, starIdx) => (
+                      <FiStar
+                        key={starIdx}
+                        size={15}
+                        className="fill-amber-400 text-amber-400"
+                      />
+                    )
+                  )}
+                </div>
+              </div>
+
+              <blockquote className="mt-5 font-serif text-xl italic leading-relaxed text-soft-white sm:text-2xl">
+                &ldquo;{project.testimonial.quote}&rdquo;
+              </blockquote>
+
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
+                <div>
+                  <div className="font-condensed text-lg font-bold uppercase tracking-wider text-soft-white">
+                    {project.testimonial.author}
+                  </div>
+                  <div className="font-mono text-xs text-mist">
+                    {project.testimonial.role}
+                  </div>
+                </div>
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-emerald-300">
+                  ✓ Verified Client Delivery
+                </span>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* PREVIOUS / NEXT PROJECT NAVIGATION FOOTER */}
         <nav
           aria-label="Project pagination"
@@ -662,7 +727,7 @@ export default function ProjectDetailPage({
               onClick={(e) => e.stopPropagation()}
               className="relative max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-white/20 bg-[#07020e] shadow-2xl"
             >
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-3.5">
                 <div>
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-400">
                     {lightboxShot.tag}
@@ -671,14 +736,55 @@ export default function ProjectDetailPage({
                     {lightboxShot.title}
                   </h3>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setLightboxShot(null)}
-                  aria-label="Close preview"
-                  className="grid h-9 w-9 place-items-center rounded-lg border border-white/15 bg-white/5 text-soft-white transition-colors hover:border-violet-400 hover:bg-violet-600"
-                >
-                  <FiX size={18} />
-                </button>
+                <div className="flex items-center gap-2">
+                  {hasScreenshots && project.screenshots.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const idx = project.screenshots.findIndex(
+                            (s) => s.src === lightboxShot.src
+                          );
+                          const prev =
+                            project.screenshots[
+                              (idx - 1 + project.screenshots.length) %
+                                project.screenshots.length
+                            ];
+                          setLightboxShot(prev);
+                        }}
+                        aria-label="Previous screenshot"
+                        className="grid h-9 w-9 place-items-center rounded-lg border border-white/15 bg-white/5 text-soft-white transition-colors hover:border-violet-400 hover:bg-violet-600"
+                      >
+                        <FiArrowLeft size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const idx = project.screenshots.findIndex(
+                            (s) => s.src === lightboxShot.src
+                          );
+                          const next =
+                            project.screenshots[
+                              (idx + 1) % project.screenshots.length
+                            ];
+                          setLightboxShot(next);
+                        }}
+                        aria-label="Next screenshot"
+                        className="grid h-9 w-9 place-items-center rounded-lg border border-white/15 bg-white/5 text-soft-white transition-colors hover:border-violet-400 hover:bg-violet-600"
+                      >
+                        <FiArrowRight size={16} />
+                      </button>
+                    </>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setLightboxShot(null)}
+                    aria-label="Close preview"
+                    className="grid h-9 w-9 place-items-center rounded-lg border border-white/15 bg-white/5 text-soft-white transition-colors hover:border-violet-400 hover:bg-violet-600"
+                  >
+                    <FiX size={18} />
+                  </button>
+                </div>
               </div>
 
               <div className="max-h-[78vh] overflow-auto bg-[#040108] p-2 sm:p-4">

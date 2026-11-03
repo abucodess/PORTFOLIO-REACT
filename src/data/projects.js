@@ -114,6 +114,14 @@ export const projects = [
     accent: "from-violet-600 via-purple-600 to-indigo-900",
     previewType: "solex",
     featured: true,
+    testimonial: {
+      quote:
+        "Aboobacker did an excellent job and I am very happy with his service.",
+      author: "SOLEX Client",
+      role: "Store Owner · SOLEX E-Commerce",
+      projectLabel: "01 // SOLEX E-Commerce",
+      rating: 5,
+    },
   },
   {
     id: 2,
@@ -211,6 +219,14 @@ export const projects = [
     accent: "from-fuchsia-600 via-violet-600 to-purple-950",
     previewType: "fuwa",
     featured: true,
+    testimonial: {
+      quote:
+        "Built such an amazing app — now it's really easy to manage my business and stock.",
+      author: "FUWA POS Client",
+      role: "Founder · FUWA Fluffy Desserts",
+      projectLabel: "02 // FUWA POS Billing App",
+      rating: 5,
+    },
   },
   {
     id: 3,

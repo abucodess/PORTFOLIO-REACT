@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FiArrowRight, FiArrowUpRight, FiSend } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight, FiSend, FiStar } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { projects } from "../data/projects";
 import { profile, getWhatsAppUrl } from "../data/profile";
@@ -13,6 +13,8 @@ const capabilities = [
   "Booking & Service Platforms",
   "Full-Responsive Web Apps",
 ];
+
+const clientReviews = projects.filter((p) => p.testimonial);
 
 export default function Projects({ onSelectProject }) {
   const enquiryWhatsappUrl = getWhatsAppUrl(
@@ -152,6 +154,102 @@ export default function Projects({ onSelectProject }) {
             </motion.article>
           ))}
         </div>
+
+        {/* VERIFIED CLIENT REVIEWS */}
+        {clientReviews.length > 0 && (
+          <div className="mt-14">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-violet-400">
+                  VERIFIED CLIENT FEEDBACK
+                </span>
+                <h3 className="mt-1 font-condensed text-2xl font-extrabold uppercase tracking-wide text-soft-white sm:text-3xl">
+                  What Clients Say
+                </h3>
+              </div>
+              <div className="hidden h-px flex-1 bg-gradient-to-r from-white/20 via-violet-400/25 to-transparent sm:mx-4 sm:block" />
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-mist">
+                5.0 ★ Client Satisfaction
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {clientReviews.map((item, idx) => (
+                <motion.blockquote
+                  key={item.id}
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.55,
+                    delay: idx * 0.1,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  onClick={() => handleOpenProject(item.slug)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleOpenProject(item.slug);
+                    }
+                  }}
+                  data-cursor="Case Study"
+                  className="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border border-white/12 bg-surface/75 p-6 transition-all duration-300 hover:border-violet-400/50 hover:bg-surface sm:p-7"
+                >
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+                  <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="inline-flex items-center gap-2 rounded-md border border-violet-400/30 bg-violet-950/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-violet-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                        <span>{item.testimonial.projectLabel}</span>
+                      </span>
+
+                      <div
+                        className="flex items-center gap-1 text-amber-400"
+                        aria-label="5 out of 5 stars"
+                      >
+                        {Array.from({ length: item.testimonial.rating || 5 }).map(
+                          (_, starIdx) => (
+                            <FiStar
+                              key={starIdx}
+                              size={13}
+                              className="fill-amber-400 text-amber-400"
+                            />
+                          )
+                        )}
+                      </div>
+                    </div>
+
+                    <p className="mt-5 font-serif text-lg italic leading-relaxed text-soft-white sm:text-xl">
+                      &ldquo;{item.testimonial.quote}&rdquo;
+                    </p>
+                  </div>
+
+                  <footer className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+                    <div>
+                      <div className="font-condensed text-base font-bold uppercase tracking-wider text-soft-white">
+                        {item.testimonial.author}
+                      </div>
+                      <div className="font-mono text-[11px] text-mist">
+                        {item.testimonial.role}
+                      </div>
+                    </div>
+
+                    <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-violet-300 transition-colors group-hover:text-soft-white">
+                      <span>Inspect Project</span>
+                      <FiArrowRight
+                        size={13}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </span>
+                  </footer>
+                </motion.blockquote>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* CUSTOM WEBSITES & WEB APPS ENQUIRY BANNER */}
         <motion.div
