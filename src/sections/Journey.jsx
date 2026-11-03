@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   FiSearch,
@@ -14,6 +15,34 @@ import { getWhatsAppUrl } from "../data/profile";
 const PROCESS_ICONS = [FiSearch, FiLayers, FiPenTool, FiCode, FiSend];
 
 export default function Journey() {
+  const [glowingPills, setGlowingPills] = useState({});
+  const timersRef = useRef({});
+
+  useEffect(() => {
+    const timers = timersRef.current;
+    return () => {
+      Object.values(timers).forEach((t) => clearTimeout(t));
+    };
+  }, []);
+
+  const triggerPillGlow = useCallback((skill) => {
+    if (timersRef.current[skill]) {
+      clearTimeout(timersRef.current[skill]);
+    }
+    setGlowingPills((prev) => ({
+      ...prev,
+      [skill]: (prev[skill] || 0) + 1,
+    }));
+    timersRef.current[skill] = setTimeout(() => {
+      setGlowingPills((prev) => {
+        const next = { ...prev };
+        delete next[skill];
+        return next;
+      });
+      delete timersRef.current[skill];
+    }, 1500);
+  }, []);
+
   const whatsappHref = getWhatsAppUrl(
     "Hi Aboobacker! I'd love to discuss a freelance project with you."
   );
@@ -93,14 +122,41 @@ export default function Journey() {
                 </span>
 
                 <div className="mt-3.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                  {resumePills.slice(0, 12).map((skill) => (
-                    <div
-                      key={skill}
-                      className="rounded-lg border border-white/12 bg-white/[0.02] px-3 py-2 text-center font-mono text-[10px] uppercase tracking-wider text-soft-white/90 transition-colors hover:border-violet-400/60 hover:bg-violet-500/10 whitespace-nowrap truncate"
-                    >
-                      {skill}
-                    </div>
-                  ))}
+                  {resumePills.slice(0, 12).map((skill) => {
+                    const glowTick = glowingPills[skill];
+                    const isGlowing = Boolean(glowTick);
+                    return (
+                      <button
+                        key={skill}
+                        type="button"
+                        onClick={() => triggerPillGlow(skill)}
+                        className={`relative cursor-pointer overflow-hidden rounded-lg border border-white/12 bg-white/[0.02] px-2.5 py-2 text-center font-mono text-[10px] uppercase tracking-wider transition-all duration-700 ease-out select-none whitespace-nowrap truncate hover:border-violet-400/60 hover:bg-violet-500/10 ${
+                          isGlowing ? "font-semibold text-white" : "text-soft-white/90"
+                        }`}
+                      >
+                        {isGlowing && (
+                          <motion.span
+                            key={glowTick}
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: [1, 0.8, 0.4, 0] }}
+                            transition={{
+                              duration: 1.5,
+                              times: [0, 0.25, 0.65, 1],
+                              ease: "easeOut",
+                            }}
+                            className="pointer-events-none absolute inset-0 rounded-lg border border-violet-300"
+                            style={{
+                              background:
+                                "radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, rgba(131, 56, 236, 0.22) 70%)",
+                              boxShadow:
+                                "0 0 24px rgba(131, 56, 236, 0.8), 0 0 8px rgba(255, 255, 255, 0.45), inset 0 0 14px rgba(181, 131, 255, 0.35)",
+                            }}
+                          />
+                        )}
+                        <span className="relative z-10">{skill}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

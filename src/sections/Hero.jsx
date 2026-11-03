@@ -230,12 +230,12 @@ export default function Hero() {
             {/* CENTER SPACER FOR PORTRAIT ON DESKTOP */}
             <div className="hidden lg:col-span-3 lg:block" />
 
-            {/* RIGHT COLUMN: Perfectly Aligned & Mobile-Responsive Resume Card + KPI Stats */}
+            {/* RIGHT COLUMN: Compact, Mobile-Responsive Resume Card + KPI Stats */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="flex w-full flex-col gap-3.5 lg:col-span-4 lg:ml-auto lg:max-w-[330px]"
+              className="flex w-full flex-col gap-2.5 lg:col-span-4 lg:ml-auto lg:max-w-[268px] xl:max-w-[280px]"
             >
               {/* Interactive Star Badge -> Morphs Smoothly Into Download Resume on Hover */}
               <a
@@ -243,55 +243,55 @@ export default function Hero() {
                 download="Aboobacker_Frontend_Developer_Resume.pdf"
                 data-cursor="Resume"
                 aria-label="Download Aboobacker Resume PDF"
-                className="group relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-white/12 bg-[#07020f]/85 p-3.5 backdrop-blur-md transition-all duration-300 hover:border-violet-400/50 hover:bg-[#0b0318]/90"
+                className="group relative flex w-full items-center gap-3 overflow-hidden rounded-xl border border-white/12 bg-[#07020f]/85 px-3 py-2.5 backdrop-blur-md transition-all duration-300 hover:border-violet-400/50 hover:bg-[#0b0318]/90"
               >
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/[0.04] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:border-violet-400 group-hover:bg-violet-600/35 group-hover:shadow-[0_0_28px_rgba(131,56,236,0.65)]">
+                <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/[0.04] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:border-violet-400 group-hover:bg-violet-600/35 group-hover:shadow-[0_0_24px_rgba(131,56,236,0.65)]">
                   <span className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-violet-400/55 transition-colors duration-500 group-hover:border-white/70" />
 
                   {/* Default ✦ Star (rotates, scales down & fades out on hover) */}
-                  <span className="absolute text-base text-soft-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:rotate-90 group-hover:scale-0 group-hover:opacity-0">
+                  <span className="absolute text-sm text-soft-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:rotate-90 group-hover:scale-0 group-hover:opacity-0">
                     ✦
                   </span>
 
                   {/* Hover Download Icon (rises, scales up & fades in on hover) */}
                   <FiDownload
-                    size={17}
+                    size={15}
                     className="absolute translate-y-2 scale-50 text-white opacity-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100"
                   />
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs leading-snug text-soft-white/90 transition-colors duration-300 group-hover:text-white">
+                  <p className="text-[11px] leading-snug text-soft-white/90 transition-colors duration-300 group-hover:text-white">
                     Turning ideas into powerful, conversion-ready digital
                     experiences.
                   </p>
-                  <span className="mt-1.5 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-300 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-emerald-300">
+                  <span className="mt-1 inline-flex items-center gap-1 font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-violet-300 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-emerald-300">
                     <span>Download Resume</span>
                     <span className="opacity-75 group-hover:opacity-100">↓</span>
                   </span>
                 </div>
               </a>
 
-              {/* Responsive KPI Counters: 3-Column Symmetrical Grid on Mobile, Clean Stacked Card on Desktop */}
-              <div className="grid w-full grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-2xl border border-white/12 bg-[#07020f]/85 backdrop-blur-md lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
+              {/* Responsive KPI Counters: 3-Column Symmetrical Grid on Mobile, Compact Stacked Card on Desktop */}
+              <div className="grid w-full grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-xl border border-white/12 bg-[#07020f]/85 backdrop-blur-md lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
                 {HERO_STATS.map((stat) => (
                   <div
                     key={stat.label}
-                    className="flex flex-col items-center justify-between px-2.5 py-3 text-center sm:px-4 lg:flex-row lg:px-4 lg:py-2.5 lg:text-right"
+                    className="flex flex-col items-center justify-between px-2 py-2 text-center sm:px-3 lg:flex-row lg:px-3.5 lg:py-2 lg:text-right"
                   >
-                    <span className="font-condensed text-2xl font-extrabold leading-none tabular-nums tracking-tight text-violet-400 sm:text-3xl lg:text-[2.15rem]">
+                    <span className="font-condensed text-xl font-extrabold leading-none tabular-nums tracking-tight text-violet-400 sm:text-2xl lg:text-[1.65rem]">
                       {stat.value}
                     </span>
 
                     {/* Compact label on small mobile screens so 3 columns look balanced */}
-                    <span className="mt-1.5 font-mono text-[8.5px] leading-tight tracking-[0.1em] uppercase text-mist sm:hidden">
+                    <span className="mt-1 font-mono text-[8px] leading-tight tracking-[0.08em] uppercase text-mist sm:hidden">
                       {stat.shortLabel}
                     </span>
 
                     {/* Full two-line editorial label on tablet & desktop */}
-                    <span className="hidden whitespace-pre-line font-mono text-[9.5px] leading-tight tracking-[0.13em] uppercase text-mist sm:mt-1.5 sm:block lg:mt-0 lg:text-right">
+                    <span className="hidden whitespace-pre-line font-mono text-[8.5px] leading-tight tracking-[0.12em] uppercase text-mist sm:mt-1 sm:block lg:mt-0 lg:text-right">
                       {stat.label}
                     </span>
                   </div>
