@@ -7,22 +7,24 @@
   --font-body: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-void: #050505;
-  --color-surface: #0b0b10;
-  --color-surface-2: #131318;
-  --color-line: #1f1f28;
+  /* Deep Midnight Purple Theme Palette */
+  --color-void: #030106;
+  --color-surface: #08020f;
+  --color-surface-2: #10051e;
+  --color-line: #1e0b36;
 
-  --color-violet-950: #1a0b33;
-  --color-violet-900: #2c1065;
-  --color-violet-700: #5b21b6;
-  --color-violet-600: #7c3aed;
-  --color-violet-500: #a855f7;
-  --color-violet-400: #c084fc;
-  --color-violet-300: #d8b4fe;
+  --color-violet-950: #100320;
+  --color-violet-900: #1d0638;
+  --color-violet-800: #2b0952;
+  --color-violet-700: #3c096c;
+  --color-violet-600: #4a1082;
+  --color-violet-500: #5a189a;
+  --color-violet-400: #8338ec;
+  --color-violet-300: #b583ff;
 
-  --color-soft-white: #f5f3ff;
-  --color-mist: #9d9db0;
-  --color-mist-dim: #6c6c7d;
+  --color-soft-white: #f6f3ff;
+  --color-mist: #9a94ad;
+  --color-mist-dim: #665f7a;
 
   --animate-marquee: marquee 28s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
@@ -30,9 +32,14 @@
   --animate-spin-slow: spin 18s linear infinite;
   --animate-spin-slower: spin 38s linear infinite;
   --animate-blink: blink 1s step-end infinite;
-  --animate-beam-x: beamX 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  --animate-beam-x-rev: beamXRev 11s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  --animate-beam-y: beamY 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-beam-x: beamX 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-beam-x-rev: beamXRev 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-beam-y: beamY 11s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-perimeter-top: perimeterTop 12s linear infinite;
+  --animate-perimeter-right: perimeterRight 12s linear infinite;
+  --animate-perimeter-bottom: perimeterBottom 12s linear infinite;
+  --animate-perimeter-left: perimeterLeft 12s linear infinite;
+  --animate-trace-dash: traceDash 14s linear infinite;
 
   @keyframes marquee {
     from { transform: translate3d(0, 0, 0); }
@@ -52,10 +59,10 @@
     0% { transform: translate3d(-110%, 0, 0); opacity: 0; }
     15% { opacity: 1; }
     85% { opacity: 1; }
-    100% { transform: translate3d(220%, 0, 0); opacity: 0; }
+    100% { transform: translate3d(240%, 0, 0); opacity: 0; }
   }
   @keyframes beamXRev {
-    0% { transform: translate3d(220%, 0, 0); opacity: 0; }
+    0% { transform: translate3d(240%, 0, 0); opacity: 0; }
     15% { opacity: 1; }
     85% { opacity: 1; }
     100% { transform: translate3d(-110%, 0, 0); opacity: 0; }
@@ -64,7 +71,35 @@
     0% { transform: translate3d(0, -110%, 0); opacity: 0; }
     15% { opacity: 1; }
     85% { opacity: 1; }
-    100% { transform: translate3d(0, 220%, 0); opacity: 0; }
+    100% { transform: translate3d(0, 240%, 0); opacity: 0; }
+  }
+
+  /* Continuous GPU-accelerated tiny white line traveling around the entire website perimeter */
+  @keyframes perimeterTop {
+    0% { transform: translate3d(-100%, 0, 0); opacity: 1; }
+    25% { transform: translate3d(400%, 0, 0); opacity: 1; }
+    25.01%, 100% { transform: translate3d(400%, 0, 0); opacity: 0; }
+  }
+  @keyframes perimeterRight {
+    0%, 24.99% { transform: translate3d(0, -100%, 0); opacity: 0; }
+    25% { transform: translate3d(0, -100%, 0); opacity: 1; }
+    50% { transform: translate3d(0, 400%, 0); opacity: 1; }
+    50.01%, 100% { transform: translate3d(0, 400%, 0); opacity: 0; }
+  }
+  @keyframes perimeterBottom {
+    0%, 49.99% { transform: translate3d(400%, 0, 0); opacity: 0; }
+    50% { transform: translate3d(400%, 0, 0); opacity: 1; }
+    75% { transform: translate3d(-100%, 0, 0); opacity: 1; }
+    75.01%, 100% { transform: translate3d(-100%, 0, 0); opacity: 0; }
+  }
+  @keyframes perimeterLeft {
+    0%, 74.99% { transform: translate3d(0, 400%, 0); opacity: 0; }
+    75% { transform: translate3d(0, 400%, 0); opacity: 1; }
+    100% { transform: translate3d(0, -100%, 0); opacity: 1; }
+  }
+  @keyframes traceDash {
+    from { stroke-dashoffset: 2400; }
+    to { stroke-dashoffset: 0; }
   }
 }
 
@@ -124,19 +159,20 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, var(--color-soft-white) 15%, var(--color-violet-400) 55%, var(--color-violet-600) 90%);
+  background: linear-gradient(120deg, var(--color-soft-white) 15%, var(--color-violet-300) 55%, var(--color-violet-500) 90%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+/* Deep Midnight Purple Backdrop Typography for PORTFOLIO */
 .text-hero-backdrop {
   background: linear-gradient(
     180deg,
-    rgba(168, 85, 247, 0.88) 0%,
-    rgba(124, 58, 237, 0.62) 48%,
-    rgba(44, 16, 101, 0.14) 88%,
-    rgba(5, 5, 5, 0) 100%
+    rgba(106, 27, 178, 0.92) 0%,
+    rgba(60, 9, 108, 0.78) 46%,
+    rgba(24, 4, 46, 0.25) 86%,
+    rgba(3, 1, 6, 0) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -144,9 +180,9 @@ body {
 }
 
 .glass {
-  background: color-mix(in oklab, var(--color-surface) 75%, transparent);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: color-mix(in oklab, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-line);
 }
 
@@ -159,7 +195,7 @@ body {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(168, 85, 247, 0.5) 35%, transparent 65%, rgba(192, 132, 252, 0.45));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(90, 24, 154, 0.55) 35%, transparent 65%, rgba(131, 56, 236, 0.4));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

@@ -29,17 +29,17 @@ export default function Hero() {
       id="hero"
       className="relative min-h-[100svh] overflow-hidden bg-void pt-24 pb-12 sm:pt-28 lg:pt-32"
     >
-      {/* Dramatic Deep Violet Studio Backlight Behind "PORTFOLIO" & Portrait */}
+      {/* Dramatic Deep Midnight Purple Studio Backlight Behind "PORTFOLIO" & Portrait */}
       <div
         className="pointer-events-none absolute left-1/2 top-[42%] -z-0 h-[540px] w-[920px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(124, 58, 237, 0.45) 0%, rgba(88, 28, 135, 0.25) 45%, rgba(5, 5, 5, 0) 75%)",
+            "radial-gradient(circle, rgba(68, 14, 128, 0.55) 0%, rgba(32, 6, 64, 0.35) 48%, rgba(3, 1, 6, 0) 76%)",
         }}
         aria-hidden="true"
       />
 
-      {/* Animated White Architectural Light Lines Inside Hero Stage */}
+      {/* Lightweight Architectural White Light Lines Inside Hero Stage */}
       <svg
         viewBox="0 0 1440 860"
         fill="none"
@@ -49,8 +49,8 @@ export default function Hero() {
         <defs>
           <linearGradient id="heroWhiteLine1" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-            <stop offset="50%" stopColor="rgba(255,255,255,0.45)" />
-            <stop offset="100%" stopColor="rgba(192,132,252,0)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.5)" />
+            <stop offset="100%" stopColor="rgba(181,131,255,0)" />
           </linearGradient>
           <linearGradient id="heroWhiteLine2" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(255,255,255,0)" />
@@ -60,23 +60,22 @@ export default function Hero() {
         </defs>
 
         {/* Sweeping white light curve from left toward right callout */}
-        <motion.path
+        <path
           d="M 80 620 C 380 560, 740 310, 1180 355"
           stroke="url(#heroWhiteLine1)"
-          strokeWidth="1.2"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.75 }}
-          transition={{ duration: 2.2, ease: "easeOut" }}
+          strokeWidth="1.1"
+          strokeDasharray="420 1980"
+          className="animate-trace-dash opacity-80"
         />
 
         {/* Secondary white light arc across upper stage */}
-        <motion.path
+        <path
           d="M 220 140 Q 720 340 1320 190"
           stroke="url(#heroWhiteLine2)"
           strokeWidth="1"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.55 }}
-          transition={{ duration: 2.6, delay: 0.3, ease: "easeOut" }}
+          strokeDasharray="360 2040"
+          className="animate-trace-dash opacity-65"
+          style={{ animationDelay: "-5s" }}
         />
       </svg>
 
@@ -84,7 +83,7 @@ export default function Hero() {
         {/* TOP EDITORIAL MICRO-HEADER BAR (Single clean row on mobile & desktop) */}
         <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-3 font-mono text-[9.5px] tracking-[0.16em] uppercase sm:text-xs sm:tracking-[0.22em]">
           <div className="flex items-center gap-1.5 truncate">
-            <span className="font-semibold text-violet-400">
+            <span className="font-semibold text-violet-300">
               FRONTEND DEV
             </span>
             <span className="text-white/30">/</span>
@@ -99,7 +98,7 @@ export default function Hero() {
             className="group inline-flex shrink-0 items-center gap-1.5 text-soft-white/90 transition-colors hover:text-violet-300"
           >
             <span>AVAILABLE FOR FREELANCE</span>
-            <span className="text-violet-400 transition-transform duration-300 group-hover:rotate-90">
+            <span className="text-violet-300 transition-transform duration-300 group-hover:rotate-90">
               ✦
             </span>
           </a>
@@ -129,12 +128,12 @@ export default function Hero() {
             transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="pointer-events-none relative z-20 -mt-14 mx-auto flex w-full max-w-[500px] justify-center sm:-mt-24 sm:max-w-[560px] lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-8 lg:mt-0 lg:max-w-[660px] lg:items-end"
           >
-            {/* Subtle glowing rim halo directly behind head & shoulders */}
+            {/* Subtle Midnight Purple rim halo directly behind head & shoulders */}
             <div
               className="absolute left-1/2 top-[44%] -z-10 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px] sm:h-[400px] sm:w-[400px]"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, rgba(124, 58, 237, 0.18) 58%, transparent 80%)",
+                  "radial-gradient(circle, rgba(82, 18, 150, 0.5) 0%, rgba(40, 8, 78, 0.24) 58%, transparent 80%)",
               }}
               aria-hidden="true"
             />
