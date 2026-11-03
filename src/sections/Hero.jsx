@@ -1,303 +1,278 @@
 import { motion } from "framer-motion";
-import { FiArrowRight, FiPlay, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { profile } from "../data/profile";
+import {
+  FiArrowUpRight,
+  FiArrowRight,
+  FiDownload,
+  FiGlobe,
+} from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+import { profile, getWhatsAppUrl } from "../data/profile";
+
+const HERO_STATS = [
+  { value: "03+", label: "LIVE DEPLOYED\nCLIENT & STORE APPS" },
+  { value: "02", label: "COMMERCIAL\nCLIENT SYSTEMS" },
+  { value: "16+", label: "MODERN FRONTEND\nTECHNOLOGIES" },
+];
 
 export default function Hero() {
+  const whatsappHref = getWhatsAppUrl();
+
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.dispatchEvent(new CustomEvent("portfolio:navigate", { detail: id }));
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-28 sm:pt-32 lg:pt-36"
+      className="relative min-h-[100svh] overflow-hidden bg-void pt-24 pb-12 sm:pt-28 lg:pt-32"
     >
-      {/* Subtle purple studio backlight behind headline & centerpiece */}
+      {/* Dramatic Deep Violet Studio Backlight Behind "PORTFOLIO" & Portrait */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[52%] -z-10 h-[520px] w-[780px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-65"
+        className="pointer-events-none absolute left-1/2 top-[42%] -z-0 h-[540px] w-[920px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(124, 58, 237, 0.34) 0%, rgba(88, 28, 135, 0.16) 45%, transparent 72%)",
+            "radial-gradient(circle, rgba(124, 58, 237, 0.45) 0%, rgba(88, 28, 135, 0.25) 45%, rgba(5, 5, 5, 0) 75%)",
         }}
         aria-hidden="true"
       />
 
-      <div className="container-px relative z-10 mx-auto flex w-full max-w-[1320px] flex-1 flex-col justify-between">
-        {/* TOP CIRCULAR STAMP (Matches top-right circular stamp in reference image) */}
-        <div
-          className="pointer-events-none absolute right-6 top-6 hidden lg:flex h-24 w-24 items-center justify-center xl:right-14"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 120 120"
-            className="h-full w-full animate-spin-slower text-violet-300/75"
-          >
-            <defs>
-              <path
-                id="mindlyCirclePath"
-                d="M 60, 60 m -42, 0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0"
-              />
-            </defs>
-            <text className="fill-current font-mono text-[8.5px] tracking-[0.23em]">
-              <textPath href="#mindlyCirclePath" startOffset="0%">
-                • A MORE FOCUSED YOU • EVERYDAY
-              </textPath>
-            </text>
-          </svg>
-          <span className="absolute text-violet-400">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L14.3 9.7L22 12L14.3 14.3L12 22L9.7 14.3L2 12L9.7 9.7L12 2Z" />
-            </svg>
-          </span>
-        </div>
+      {/* Animated White Architectural Light Lines Inside Hero Stage */}
+      <svg
+        viewBox="0 0 1440 860"
+        fill="none"
+        className="pointer-events-none absolute inset-0 z-10 h-full w-full"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="heroWhiteLine1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.45)" />
+            <stop offset="100%" stopColor="rgba(192,132,252,0)" />
+          </linearGradient>
+          <linearGradient id="heroWhiteLine2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.35)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+          </linearGradient>
+        </defs>
 
-        {/* CENTER HEADLINE, SUBHEADLINE & DUAL PILL BUTTONS */}
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif-editorial text-[clamp(2.75rem,6vw,5.25rem)] font-medium leading-[1.02] tracking-tight text-soft-white"
-          >
-            <span className="block">A clearer mind</span>
-            <span className="block italic font-normal text-gradient">
-              for a brighter you.
+        {/* Sweeping white light curve from left toward right callout */}
+        <motion.path
+          d="M 80 620 C 380 560, 740 310, 1180 355"
+          stroke="url(#heroWhiteLine1)"
+          strokeWidth="1.2"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.75 }}
+          transition={{ duration: 2.2, ease: "easeOut" }}
+        />
+
+        {/* Secondary white light arc across upper stage */}
+        <motion.path
+          d="M 220 140 Q 720 340 1320 190"
+          stroke="url(#heroWhiteLine2)"
+          strokeWidth="1"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.55 }}
+          transition={{ duration: 2.6, delay: 0.3, ease: "easeOut" }}
+        />
+      </svg>
+
+      <div className="container-px relative z-20 mx-auto flex max-w-7xl flex-col justify-between">
+        {/* TOP EDITORIAL MICRO-HEADER BAR (Matches top strip of reference image) */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-[10px] tracking-[0.22em] uppercase sm:text-xs">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-violet-400">
+              FRONTEND DEVELOPER
             </span>
-          </motion.h1>
+            <span className="text-white/30">/</span>
+            <span className="text-soft-white/80">REACT.JS CREATOR</span>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 max-w-md text-sm leading-relaxed text-mist sm:text-[15px]"
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="WhatsApp"
+            className="group inline-flex items-center gap-2 text-soft-white/90 transition-colors hover:text-violet-300"
           >
-            Abubacker builds modern web applications, organizes complex systems,
-            and crafts intelligent digital experiences — all in one beautiful space.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-7 flex flex-wrap items-center justify-center gap-3.5"
-          >
-            <button
-              type="button"
-              data-cursor="button"
-              onClick={() => scrollTo("projects")}
-              className="group inline-flex items-center gap-2.5 rounded-full bg-violet-600 px-6 py-3 text-xs font-medium text-soft-white shadow-[0_0_30px_rgba(124,58,237,0.5)] transition-all duration-200 hover:bg-violet-500 whitespace-nowrap shrink-0"
-            >
-              <span>View My Work</span>
-              <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
-            </button>
-
-            <a
-              href={profile.resumeUrl}
-              download
-              data-cursor="button"
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 text-xs font-medium text-soft-white backdrop-blur-md transition-colors duration-200 hover:border-violet-400/50 hover:bg-violet-500/10 whitespace-nowrap shrink-0"
-            >
-              <span className="grid h-4 w-4 place-items-center rounded-full bg-violet-400 text-[#050505]">
-                <FiPlay size={8} className="translate-x-[0.5px]" fill="currentColor" />
-              </span>
-              <span>Resume / CV</span>
-            </a>
-          </motion.div>
+            <span>AVAILABLE FOR FREELANCE</span>
+            <span className="text-violet-400 transition-transform duration-300 group-hover:rotate-90">
+              ✦
+            </span>
+          </a>
         </div>
 
-        {/* BOTTOM SPATIAL STAGE: LEFT CARD + CURVED LINES + PORTRAIT & ORBITING CARDS + RIGHT CARD */}
-        <div className="relative mt-4 flex w-full flex-col items-center justify-end lg:mt-2">
-          {/* Delicate Curved SVG Connector Lines (Matches left & right curved lines in reference) */}
-          <svg
-            viewBox="0 0 1280 540"
-            fill="none"
-            className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
+        {/* MAIN EDITORIAL STAGE: GIANT "PORTFOLIO" BACKDROP + STUDIO PORTRAIT + LEFT/RIGHT OVERLAYS */}
+        <div className="relative mt-4 flex min-h-[540px] flex-col justify-between sm:min-h-[620px] lg:min-h-[680px]">
+          {/* MONUMENTAL CONDENSED "PORTFOLIO" BACKDROP TEXT (Layered behind portrait) */}
+          <div
+            className="pointer-events-none relative z-10 select-none overflow-hidden text-center"
             aria-hidden="true"
           >
-            <defs>
-              <linearGradient id="curveLeft" x1="160" y1="190" x2="420" y2="335" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="rgba(192, 132, 252, 0.42)" />
-                <stop offset="100%" stopColor="rgba(192, 132, 252, 0.08)" />
-              </linearGradient>
-              <linearGradient id="curveRight" x1="1110" y1="260" x2="850" y2="375" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="rgba(192, 132, 252, 0.42)" />
-                <stop offset="100%" stopColor="rgba(192, 132, 252, 0.08)" />
-              </linearGradient>
-            </defs>
-            {/* Left sweeping curve from bottom of Left Floating Card into Orbit */}
-            <path
-              d="M 168 205 C 180 315, 275 350, 395 342"
-              stroke="url(#curveLeft)"
-              strokeWidth="1.2"
-            />
-            {/* Right sweeping curve from bottom of Right Floating Card into Orbit */}
-            <path
-              d="M 1105 275 C 1075 365, 965 390, 865 368"
-              stroke="url(#curveRight)"
-              strokeWidth="1.2"
-            />
-          </svg>
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="font-condensed text-[clamp(5.4rem,19.5vw,18.5rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.03em] text-hero-backdrop"
+            >
+              PORTFOLIO
+            </motion.div>
+          </div>
 
-          {/* LEFT FLOATING CARD (Matches "Turn thoughts into progress." card in reference) */}
+          {/* CENTER STUDIO PORTRAIT OF ABOOBACKER (Overlapping the giant PORTFOLIO letters in 3D depth) */}
           <motion.div
-            initial={{ opacity: 0, x: -24, rotate: -6 }}
-            animate={{ opacity: 1, x: 0, rotate: -6 }}
-            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-card absolute left-2 top-0 z-20 hidden w-[205px] rounded-3xl p-5 lg:block xl:left-6"
-          >
-            <div className="mb-3.5 grid h-9 w-9 place-items-center rounded-full border border-violet-400/25 bg-violet-500/15 text-violet-300">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L14 9.5L21.5 11.5L14 13.5L12 21L10 13.5L2.5 11.5L10 9.5L12 2Z" />
-              </svg>
-            </div>
-            <p className="font-display text-sm font-semibold leading-snug text-soft-white">
-              Turn thoughts
-              <br />
-              into progress.
-            </p>
-            <p className="mt-2 text-[11px] leading-relaxed text-mist">
-              Capture, organize and
-              <br />
-              ship full-stack apps.
-            </p>
-          </motion.div>
-
-          {/* RIGHT FLOATING CARD (Matches "Ideas, anytime, anywhere." card in reference) */}
-          <motion.div
-            initial={{ opacity: 0, x: 24, rotate: 6 }}
-            animate={{ opacity: 1, x: 0, rotate: 6 }}
-            transition={{ duration: 0.65, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-card absolute right-2 top-14 z-20 hidden w-[210px] rounded-3xl p-5 lg:block xl:right-6"
-          >
-            <div className="mb-3.5 flex items-center">
-              <img
-                src="/images/profile.jpg"
-                alt="Abubacker avatar"
-                className="h-7 w-7 rounded-full border border-violet-400/40 object-cover object-top"
-              />
-              <span className="-ml-2 grid h-7 w-7 place-items-center rounded-full border border-violet-400/40 bg-violet-950 font-mono text-[9px] font-semibold text-violet-200">
-                R19
-              </span>
-              <span className="-ml-2 grid h-7 w-7 place-items-center rounded-full border border-violet-400/40 bg-purple-950 font-mono text-[9px] font-semibold text-violet-200">
-                AI
-              </span>
-              <button
-                type="button"
-                onClick={() => scrollTo("skills")}
-                aria-label="Explore skills"
-                className="-ml-1.5 grid h-7 w-7 place-items-center rounded-full border border-white/15 bg-surface-2 text-xs text-soft-white hover:border-violet-400"
-              >
-                +
-              </button>
-            </div>
-            <p className="font-display text-sm font-semibold leading-snug text-soft-white">
-              Ideas, anytime,
-              <br />
-              anywhere.
-            </p>
-            <p className="mt-2 text-[11px] leading-relaxed text-mist">
-              Fast &amp; responsive across
-              <br />
-              all your devices.
-            </p>
-          </motion.div>
-
-          {/* CENTRAL PORTRAIT & 3D ORBITING GLASS CARDS FROM REFERENCE IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            initial={{ opacity: 0, y: 36, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 mx-auto w-full max-w-[760px] select-none"
+            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="pointer-events-none relative z-20 -mt-16 mx-auto flex w-full max-w-[540px] justify-center sm:-mt-28 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-10 lg:mt-0 lg:max-w-[650px] lg:items-end"
           >
-            {/* Ambient violet halo behind the head and cards */}
+            {/* Subtle glowing rim halo directly behind head & shoulders */}
             <div
-              className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[320px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[70px]"
+              className="absolute left-1/2 top-1/2 -z-10 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px] sm:h-[420px] sm:w-[420px]"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(168, 85, 247, 0.38) 0%, rgba(124, 58, 237, 0.15) 60%, transparent 80%)",
+                  "radial-gradient(circle, rgba(168, 85, 247, 0.42) 0%, rgba(124, 58, 237, 0.15) 60%, transparent 80%)",
               }}
               aria-hidden="true"
             />
 
-            <picture>
-              <source srcSet={profile.heroCenterpieceWebp} type="image/webp" />
+            <picture className="w-full">
+              <source srcSet={profile.heroPortraitWebp} type="image/webp" />
               <img
-                src={profile.heroCenterpiecePng}
-                alt="Abubacker looking upward surrounded by floating 3D cards for Focus, Ideas, and Plan"
-                width="1280"
-                height="856"
+                src={profile.heroPortraitPng}
+                alt="Aboobacker — Frontend Developer & React.js Creator"
+                width="800"
+                height="700"
                 fetchPriority="high"
                 decoding="async"
-                className="mx-auto block h-auto w-full max-h-[490px] object-contain object-bottom drop-shadow-[0_20px_60px_rgba(124,58,237,0.28)]"
+                referrerPolicy="no-referrer"
+                className="mx-auto block h-auto w-full max-h-[440px] object-contain object-bottom drop-shadow-[0_24px_65px_rgba(0,0,0,0.95)] sm:max-h-[540px] lg:max-h-[610px]"
               />
             </picture>
+
+            {/* Bottom Blend Vignette so Portrait Merges Seamlessly into #050505 */}
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-void via-void/80 to-transparent"
+              aria-hidden="true"
+            />
           </motion.div>
 
-          {/* BOTTOM-LEFT & BOTTOM-RIGHT ANCHORS (Matching reference image) */}
-          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-6 border-t border-white/[0.06] py-6 sm:flex-row lg:pointer-events-none lg:absolute lg:inset-x-0 lg:bottom-8 lg:border-t-0 lg:py-0">
-            {/* Bottom-Left Proof Anchor */}
-            <div className="pointer-events-auto flex flex-col items-center sm:items-start">
-              <div className="mb-2.5 hidden h-px w-7 bg-violet-400/50 lg:block" />
-              <p className="text-xs leading-relaxed text-mist">
-                Built &amp; shipped <span className="text-soft-white font-medium">6+ production apps</span>
-                <br />
-                with <span className="text-soft-white font-medium">400+ GitHub commits</span>
+          {/* FOREGROUND 12-COLUMN OVERLAY GRID (Left Identity Column + Right Callout & Stats Column) */}
+          <div className="relative z-30 mt-auto grid grid-cols-1 items-end gap-10 pt-4 lg:grid-cols-12 lg:gap-6 lg:pb-6">
+            {/* LEFT COLUMN: "Hello, I'm ABOOBACKER" + Role + Bio + Freelance CTAs */}
+            <motion.div
+              initial={{ opacity: 0, x: -28 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-start lg:col-span-5"
+            >
+              <p className="font-serif-editorial text-2xl italic text-soft-white/90 sm:text-3xl">
+                Hello, I&apos;m
               </p>
 
-              <div className="mt-3 flex items-center">
+              <h1 className="mt-1 font-condensed text-[clamp(3.4rem,7vw,5.75rem)] font-extrabold uppercase leading-[0.88] tracking-tight text-soft-white">
+                ABOOBACKER
+                <span className="text-violet-400">.</span>
+              </h1>
+
+              <p className="mt-3 font-condensed text-lg font-bold uppercase tracking-[0.08em] text-violet-400 sm:text-xl">
+                FRONTEND DEVELOPER &amp; REACT.JS CREATOR
+              </p>
+
+              <p className="mt-3 max-w-sm text-xs leading-relaxed text-mist sm:text-[13.5px]">
+                I engineer fast, high-converting e-commerce platforms and
+                responsive client web applications with{" "}
+                <span className="text-soft-white">
+                  React.js, Redux Toolkit, TypeScript, and Tailwind CSS
+                </span>{" "}
+                — combining clean architecture with smooth interactions that
+                drive real business results.
+              </p>
+
+              {/* Primary Freelance & Portfolio CTAs */}
+              <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a
-                  href={profile.socials.github}
+                  href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-cursor="link"
-                  aria-label="GitHub"
-                  className="grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-surface-2 text-mist transition-colors hover:border-violet-400 hover:text-soft-white"
+                  data-cursor="WhatsApp"
+                  className="group inline-flex items-center gap-2 rounded-lg bg-violet-600 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-soft-white shadow-[0_0_30px_rgba(124,58,237,0.5)] transition-all duration-200 hover:bg-violet-500 whitespace-nowrap shrink-0"
                 >
-                  <FiGithub size={14} />
+                  <FaWhatsapp className="text-sm text-emerald-300" />
+                  <span>Let&apos;s Talk</span>
+                  <FiArrowUpRight className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
-                <a
-                  href={profile.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="link"
-                  aria-label="LinkedIn"
-                  className="-ml-1.5 grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-surface-2 text-mist transition-colors hover:border-violet-400 hover:text-soft-white"
-                >
-                  <FiLinkedin size={14} />
-                </a>
-                <a
-                  href={profile.socials.email}
-                  data-cursor="link"
-                  aria-label="Email"
-                  className="-ml-1.5 grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-surface-2 text-mist transition-colors hover:border-violet-400 hover:text-soft-white"
-                >
-                  <FiMail size={14} />
-                </a>
+
                 <button
                   type="button"
-                  onClick={() => scrollTo("contact")}
-                  aria-label="Contact Abubacker"
-                  className="-ml-1.5 grid h-8 w-8 place-items-center rounded-full border border-violet-400/40 bg-violet-600/25 text-xs font-medium text-soft-white transition-colors hover:bg-violet-600/40"
+                  data-cursor="Projects"
+                  onClick={() => scrollTo("projects")}
+                  className="group inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-xs font-semibold uppercase tracking-wider text-soft-white backdrop-blur-md transition-colors duration-200 hover:border-violet-400/60 hover:bg-violet-500/15 whitespace-nowrap shrink-0"
                 >
-                  +
+                  <span>Selected Work</span>
+                  <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
                 </button>
-              </div>
-            </div>
 
-            {/* Bottom-Right Clarity Anchor */}
-            <div className="pointer-events-auto flex flex-col items-center text-center sm:items-end sm:text-right">
-              <div className="mb-2 flex items-center gap-2 text-violet-400">
-                <span className="hidden h-px w-6 bg-white/15 sm:inline-block" />
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L14.3 9.7L22 12L14.3 14.3L12 22L9.7 14.3L2 12L9.7 9.7L12 2Z" />
-                </svg>
+                <a
+                  href={profile.resumeUrl}
+                  download="Aboobacker_Frontend_Developer_Resume.pdf"
+                  data-cursor="Resume"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-4 py-3 font-mono text-[11px] text-mist transition-colors duration-200 hover:border-white/30 hover:text-soft-white whitespace-nowrap shrink-0"
+                >
+                  <FiDownload size={13} />
+                  <span>Resume</span>
+                </a>
               </div>
-              <p className="text-xs leading-relaxed text-mist">
-                Less chaos
-                <br />
-                <span className="text-soft-white">More clarity</span>
-              </p>
-            </div>
+
+              {/* Bottom-left Worldwide Availability Tag */}
+              <div className="mt-6 flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] uppercase text-soft-white/80">
+                <FiGlobe className="text-violet-400" size={14} />
+                <span>AVAILABLE WORLDWIDE · KERALA, INDIA</span>
+              </div>
+            </motion.div>
+
+            {/* CENTER SPACER FOR PORTRAIT ON DESKTOP */}
+            <div className="hidden lg:col-span-3 lg:block" />
+
+            {/* RIGHT COLUMN: Floating Star Callout + Stacked Metrics (Matches reference right side) */}
+            <motion.div
+              initial={{ opacity: 0, x: 28 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.75, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col justify-between gap-8 lg:col-span-4 lg:items-end"
+            >
+              {/* Floating Star Callout Badge ("Turning ideas into powerful digital experiences.") */}
+              <div className="flex items-center gap-4 self-start lg:mr-4 lg:mb-6 lg:self-end">
+                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/[0.03] backdrop-blur-md">
+                  <span className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-violet-400/50" />
+                  <span className="text-base text-soft-white">✦</span>
+                </div>
+                <p className="max-w-[185px] text-xs leading-relaxed text-soft-white/90">
+                  Turning ideas into powerful, conversion-ready digital
+                  experiences.
+                </p>
+              </div>
+
+              {/* Stacked KPI Counters with Hairline Dividers */}
+              <div className="w-full max-w-[260px] divide-y divide-white/12 border-y border-white/12">
+                {HERO_STATS.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex items-center justify-between gap-4 py-3.5"
+                  >
+                    <span className="font-condensed text-4xl font-extrabold tabular-nums tracking-tight text-violet-400 sm:text-[2.6rem]">
+                      {stat.value}
+                    </span>
+                    <span className="whitespace-pre-line text-right font-mono text-[10px] leading-tight tracking-[0.14em] uppercase text-mist">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

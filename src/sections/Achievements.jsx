@@ -78,13 +78,13 @@ export default function Achievements() {
               </h3>
             </div>
             <a
-              href="https://github.com/abubacker8593"
+              href="https://github.com/abucodess"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="GitHub"
               className="font-mono text-xs text-violet-300 underline-offset-4 hover:underline"
             >
-              @abubacker8593 ↗
+              @abucodess ↗
             </a>
           </div>
 

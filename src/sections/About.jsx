@@ -48,29 +48,29 @@ export default function About() {
             <div className="relative flex flex-col gap-6 p-8 pt-6">
               <div>
                 <p className="font-display text-xl font-semibold text-soft-white">
-                  Abubacker
+                  Aboobacker
                 </p>
                 <p className="font-mono text-xs text-violet-300">
-                  @ Betterinu
+                  Frontend Developer Intern @ BetterInu
                 </p>
               </div>
 
               <p className="text-mist">
-                I&apos;m passionate about building modern web applications,
-                exploring artificial intelligence, and creating digital
-                experiences that are fast, beautiful, and user-friendly.
-                I&apos;m constantly learning and building projects that
-                challenge my skills.
+                Results-driven Frontend Developer specializing in React.js,
+                JavaScript (ES6+), TypeScript, and Tailwind CSS. Experienced in
+                shipping production client applications — from full-featured
+                e-commerce platforms with role-based access control to
+                real-time POS billing systems.
               </p>
 
               <div className="flex flex-col gap-3 border-t border-line pt-5 font-mono text-xs text-mist">
                 <div className="flex items-center gap-2">
                   <FiBookOpen className="text-violet-400" />
-                  BCA • Jain University (Online)
+                  BCA • JAIN (Deemed-to-be University)
                 </div>
                 <div className="flex items-center gap-2">
                   <FiMapPin className="text-violet-400" />
-                  Kerala, India
+                  Kerala, India · Available Worldwide
                 </div>
               </div>
             </div>
@@ -106,15 +106,18 @@ export default function About() {
               className="glow-border rounded-2xl border border-line bg-surface/60 p-6"
             >
               <p className="font-mono text-xs uppercase tracking-wider text-violet-400">
-                Currently
+                Current Focus
               </p>
               <p className="mt-3 text-mist">
-                Deepening my full-stack skills toward{" "}
-                <span className="text-soft-white">Python &amp; Django</span>,
-                while studying the fundamentals of{" "}
-                <span className="text-soft-white">machine learning</span> — the
-                bridge between where I am and where I&apos;m headed as an AI
-                engineer.
+                Building responsive, reusable UI components and integrating{" "}
+                <span className="text-soft-white">REST APIs</span> as a
+                Frontend Developer Intern at{" "}
+                <span className="text-soft-white">BetterInu</span>, while
+                delivering high-conversion freelance web applications with{" "}
+                <span className="text-soft-white">
+                  React.js, TanStack Start, Redux Toolkit &amp; TypeScript
+                </span>
+                .
               </p>
             </motion.div>
           </div>

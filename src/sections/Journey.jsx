@@ -1,92 +1,207 @@
-import { useRef } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
-import SectionHeading from "../components/UI/SectionHeading";
-import { timeline } from "../data/timeline";
+import { motion } from "framer-motion";
+import {
+  FiSearch,
+  FiLayers,
+  FiPenTool,
+  FiCode,
+  FiSend,
+  FiArrowRight,
+} from "react-icons/fi";
+import { workProcess } from "../data/timeline";
+import { resumePills } from "../data/skills";
+import { getWhatsAppUrl } from "../data/profile";
 
-const typeBadge = {
-  education: "bg-blue-500/10 text-blue-300 border-blue-400/20",
-  milestone: "bg-amber-500/10 text-amber-300 border-amber-400/20",
-  project: "bg-violet-500/10 text-violet-300 border-violet-400/20",
-  current: "bg-emerald-500/10 text-emerald-300 border-emerald-400/20",
-};
+const PROCESS_ICONS = [FiSearch, FiLayers, FiPenTool, FiCode, FiSend];
 
 export default function Journey() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 30%"],
-  });
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-  });
+  const whatsappHref = getWhatsAppUrl(
+    "Hi Aboobacker! I'd love to discuss a freelance project with you."
+  );
 
   return (
-    <section id="journey" className="section-pad container-px relative cv-auto">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="04 / Journey"
-          title="An unconventional path — chosen on purpose."
-          subtitle="Real growth happens when you take ownership of your learning. Here's how my story unfolded."
-        />
-
-        <div ref={ref} className="relative mx-auto max-w-4xl">
-          {/* Center line */}
-          <div className="absolute top-2 bottom-2 left-4 w-px bg-white/10 md:left-1/2 md:-translate-x-1/2" />
+    <section
+      id="journey"
+      className="section-pad relative z-10 border-t border-white/10"
+    >
+      <div className="container-px mx-auto max-w-7xl">
+        {/* 3-COLUMN ARCHITECTURAL GRID MATCHING REFERENCE IMAGE:
+            Col 1: Experience, Education & Skills
+            Col 2: 5-Step Work Process
+            Col 3: Editorial Philosophy & Freelance CTA Card */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+          {/* COLUMN 1 (5 cols): EXPERIENCE, EDUCATION & SKILLS */}
           <motion.div
-            style={{ scaleY, transformOrigin: "top" }}
-            className="absolute top-2 bottom-2 left-4 w-px bg-gradient-to-b from-violet-400 via-violet-500 to-fuchsia-500 shadow-[0_0_16px_rgba(168,85,247,0.8)] md:left-1/2 md:-translate-x-1/2"
-          />
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-between lg:col-span-5"
+          >
+            <div>
+              <h2 className="font-condensed text-2xl font-extrabold uppercase tracking-wide text-soft-white sm:text-3xl">
+                EXPERIENCE &amp; EDUCATION
+              </h2>
 
-          <div className="space-y-12">
-            {timeline.map((item, i) => {
-              const isLeft = i % 2 === 0;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: i * 0.05 }}
-                  className={`relative flex flex-col md:flex-row ${
-                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                  } items-start`}
-                >
-                  <div className="w-full pl-12 md:w-1/2 md:px-10 md:pl-10">
-                    <div className="glass glow-border rounded-2xl p-6 transition hover:border-violet-500/40">
-                      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-                        <span className="font-mono text-xs font-semibold text-violet-400">
-                          {item.year}
-                        </span>
-                        <span
-                          className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider ${typeBadge[item.type]}`}
-                        >
-                          {item.type}
-                        </span>
-                      </div>
-                      <h3 className="font-display text-lg font-bold text-soft-white">
+              <div className="mt-6 space-y-6">
+                {/* Experience Item 1: BetterInu Internship */}
+                <div className="border-b border-white/10 pb-5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-400">
+                    EXPERIENCE
+                  </span>
+                  <div className="mt-2 flex items-baseline justify-between gap-4">
+                    <h3 className="font-display text-base font-bold text-soft-white">
+                      Frontend Developer Intern
+                    </h3>
+                    <span className="font-mono text-xs tabular-nums text-violet-400 whitespace-nowrap shrink-0">
+                      Jan 2026 – Present
+                    </span>
+                  </div>
+                  <p className="mt-0.5 font-mono text-xs text-mist">
+                    BetterInu · Remote
+                  </p>
+                  <p className="mt-2.5 text-xs leading-relaxed text-mist">
+                    Engineered responsive, mobile-friendly web interfaces using
+                    React.js, JavaScript, HTML5, CSS3, and Tailwind CSS. Built
+                    reusable React components and integrated REST APIs with
+                    Axios in a collaborative Git/GitHub workflow.
+                  </p>
+                </div>
+
+                {/* Education Item: BCA at Jain University */}
+                <div className="border-b border-white/10 pb-5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-400">
+                    EDUCATION
+                  </span>
+                  <div className="mt-2 flex items-baseline justify-between gap-4">
+                    <h3 className="font-display text-base font-bold text-soft-white">
+                      Bachelor of Computer Applications (BCA)
+                    </h3>
+                    <span className="font-mono text-xs tabular-nums text-violet-400 whitespace-nowrap shrink-0">
+                      2026 – 2029
+                    </span>
+                  </div>
+                  <p className="mt-0.5 font-mono text-xs text-mist">
+                    JAIN (Deemed-to-be University) · Online Program
+                  </p>
+                </div>
+              </div>
+
+              {/* SKILLS GRID (Matches bordered skill matrix in reference image) */}
+              <div className="mt-7">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-400">
+                  CORE TECHNICAL STACK
+                </span>
+
+                <div className="mt-3.5 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {resumePills.slice(0, 12).map((skill) => (
+                    <div
+                      key={skill}
+                      className="rounded-lg border border-white/12 bg-white/[0.02] px-3 py-2 text-center font-mono text-[10px] uppercase tracking-wider text-soft-white/90 transition-colors hover:border-violet-400/60 hover:bg-violet-500/10 whitespace-nowrap truncate"
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* COLUMN 2 (4 cols): 5-STEP WORK PROCESS WITH VERTICAL WHITE LIGHT LINE */}
+          <motion.div
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-4 lg:border-x lg:border-white/10 lg:px-7"
+          >
+            <h2 className="font-condensed text-2xl font-extrabold uppercase tracking-wide text-soft-white sm:text-3xl">
+              WORK PROCESS
+            </h2>
+
+            <div className="relative mt-6 space-y-6">
+              {/* Vertical connecting light line */}
+              <div
+                className="pointer-events-none absolute bottom-5 left-[39px] top-5 w-px bg-gradient-to-b from-violet-400 via-white/30 to-violet-500/40"
+                aria-hidden="true"
+              />
+
+              {workProcess.map((item, idx) => {
+                const Icon = PROCESS_ICONS[idx] || FiCode;
+                return (
+                  <div key={item.step} className="relative flex items-start gap-3.5">
+                    <span className="w-5 pt-2 font-condensed text-lg font-extrabold tabular-nums text-violet-400 shrink-0">
+                      {item.step}
+                    </span>
+
+                    <div className="relative z-10 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/20 bg-void text-soft-white shadow-[0_0_15px_rgba(124,58,237,0.3)]">
+                      <Icon size={14} className="text-violet-300" />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-condensed text-base font-bold uppercase tracking-wider text-violet-400">
                         {item.title}
                       </h3>
-                      <p className="mt-0.5 font-mono text-xs text-mist">
-                        {item.place}
-                      </p>
-                      <p className="mt-3 text-sm leading-relaxed text-mist">
+                      <p className="mt-1 text-xs leading-relaxed text-mist">
                         {item.description}
                       </p>
                     </div>
                   </div>
+                );
+              })}
+            </div>
+          </motion.div>
 
-                  {/* Node */}
-                  <div className="absolute top-6 left-4 -translate-x-1/2 md:left-1/2">
-                    <div className="relative flex h-4 w-4 items-center justify-center">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-50" />
-                      <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-violet-300 bg-violet-600" />
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+          {/* COLUMN 3 (3 cols): EDITORIAL QUOTE & FREELANCE CTA CARD (Matches right card in reference) */}
+          <motion.div
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col justify-between overflow-hidden rounded-2xl border border-violet-500/30 p-7 lg:col-span-3"
+            style={{
+              background:
+                "radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.42), transparent 60%), linear-gradient(165deg, #1a0b33 0%, #090612 65%, #050505 100%)",
+            }}
+          >
+            <div>
+              <span className="font-serif-editorial text-6xl leading-none text-violet-400">
+                &ldquo;
+              </span>
+
+              <blockquote className="mt-2 font-display text-lg font-medium leading-snug text-soft-white">
+                Good frontend engineering is not just how it looks — it is how
+                fast, cleanly, and effortlessly it works for your users.
+              </blockquote>
+
+              <p className="mt-6 font-serif-editorial text-2xl italic text-soft-white/85">
+                Aboobacker
+              </p>
+              <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-violet-300">
+                Frontend &amp; React Developer
+              </p>
+            </div>
+
+            <div className="mt-10 border-t border-white/15 pt-5">
+              <p className="font-condensed text-sm font-bold uppercase tracking-wider text-soft-white">
+                LET&apos;S CREATE
+                <br />
+                SOMETHING GREAT
+                <br />
+                TOGETHER
+              </p>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="WhatsApp"
+                className="group mt-4 inline-flex items-center gap-2 font-mono text-xs text-violet-300 transition-colors hover:text-white"
+              >
+                <span>Start a Conversation</span>
+                <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

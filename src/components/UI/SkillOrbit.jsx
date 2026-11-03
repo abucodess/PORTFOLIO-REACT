@@ -1,6 +1,6 @@
-import { SiReact, SiPython, SiTypescript, SiTailwindcss, SiNodedotjs, SiMongodb } from "react-icons/si";
+import { SiReact, SiJavascript, SiTypescript, SiRedux, SiTailwindcss, SiVite } from "react-icons/si";
 
-const orbitIcons = [SiPython, SiTypescript, SiTailwindcss, SiNodedotjs, SiMongodb];
+const orbitIcons = [SiJavascript, SiTypescript, SiRedux, SiTailwindcss, SiVite];
 
 export default function SkillOrbit() {
   return (

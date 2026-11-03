@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from "react-icons/fi";
-import { profile } from "../../data/profile";
+import { FaWhatsapp } from "react-icons/fa";
+import { profile, getWhatsAppUrl } from "../../data/profile";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 const socials = [
+  { icon: FaWhatsapp, href: getWhatsAppUrl(), label: "WhatsApp", external: true },
   { icon: FiGithub, href: profile.socials.github, label: "GitHub", external: true },
   { icon: FiLinkedin, href: profile.socials.linkedin, label: "LinkedIn", external: true },
   { icon: FiMail, href: profile.socials.email, label: "Email", external: false },
