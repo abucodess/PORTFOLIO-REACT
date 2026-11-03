@@ -81,14 +81,14 @@ export default function Hero() {
       </svg>
 
       <div className="container-px relative z-20 mx-auto flex max-w-7xl flex-col justify-between">
-        {/* TOP EDITORIAL MICRO-HEADER BAR (Matches top strip of reference image) */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-[10px] tracking-[0.22em] uppercase sm:text-xs">
-          <div className="flex items-center gap-2">
+        {/* TOP EDITORIAL MICRO-HEADER BAR (Single clean row on mobile & desktop) */}
+        <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-3 font-mono text-[9.5px] tracking-[0.16em] uppercase sm:text-xs sm:tracking-[0.22em]">
+          <div className="flex items-center gap-1.5 truncate">
             <span className="font-semibold text-violet-400">
-              FRONTEND DEVELOPER
+              FRONTEND DEV
             </span>
             <span className="text-white/30">/</span>
-            <span className="text-soft-white/80">REACT.JS CREATOR</span>
+            <span className="truncate text-soft-white/80">REACT.JS CREATOR</span>
           </div>
 
           <a
@@ -96,7 +96,7 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="WhatsApp"
-            className="group inline-flex items-center gap-2 text-soft-white/90 transition-colors hover:text-violet-300"
+            className="group inline-flex shrink-0 items-center gap-1.5 text-soft-white/90 transition-colors hover:text-violet-300"
           >
             <span>AVAILABLE FOR FREELANCE</span>
             <span className="text-violet-400 transition-transform duration-300 group-hover:rotate-90">
@@ -116,52 +116,54 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="font-condensed text-[clamp(5.4rem,19.5vw,18.5rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.03em] text-hero-backdrop"
+              className="font-condensed text-[clamp(5.5rem,21vw,18.5rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.03em] text-hero-backdrop"
             >
               PORTFOLIO
             </motion.div>
           </div>
 
-          {/* CENTER STUDIO PORTRAIT OF ABOOBACKER (Overlapping the giant PORTFOLIO letters in 3D depth) */}
+          {/* CENTER STUDIO PORTRAIT OF ABOOBACKER (Overlapping the giant PORTFOLIO letters with seamless alpha mask, zero square box) */}
           <motion.div
             initial={{ opacity: 0, y: 36, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none relative z-20 -mt-16 mx-auto flex w-full max-w-[540px] justify-center sm:-mt-28 lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-10 lg:mt-0 lg:max-w-[650px] lg:items-end"
+            className="pointer-events-none relative z-20 -mt-14 mx-auto flex w-full max-w-[500px] justify-center sm:-mt-24 sm:max-w-[560px] lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-8 lg:mt-0 lg:max-w-[660px] lg:items-end"
           >
             {/* Subtle glowing rim halo directly behind head & shoulders */}
             <div
-              className="absolute left-1/2 top-1/2 -z-10 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px] sm:h-[420px] sm:w-[420px]"
+              className="absolute left-1/2 top-[44%] -z-10 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px] sm:h-[400px] sm:w-[400px]"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(168, 85, 247, 0.42) 0%, rgba(124, 58, 237, 0.15) 60%, transparent 80%)",
+                  "radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, rgba(124, 58, 237, 0.18) 58%, transparent 80%)",
               }}
               aria-hidden="true"
             />
 
-            <picture className="w-full">
+            <picture
+              className="w-full"
+              style={{
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 92% 90% at 50% 38%, #000 58%, rgba(0,0,0,0.65) 76%, transparent 98%)",
+                maskImage:
+                  "radial-gradient(ellipse 92% 90% at 50% 38%, #000 58%, rgba(0,0,0,0.65) 76%, transparent 98%)",
+              }}
+            >
               <source srcSet={profile.heroPortraitWebp} type="image/webp" />
               <img
                 src={profile.heroPortraitPng}
                 alt="Aboobacker — Frontend Developer & React.js Creator"
-                width="800"
-                height="700"
+                width="960"
+                height="820"
                 fetchPriority="high"
                 decoding="async"
                 referrerPolicy="no-referrer"
-                className="mx-auto block h-auto w-full max-h-[440px] object-contain object-bottom drop-shadow-[0_24px_65px_rgba(0,0,0,0.95)] sm:max-h-[540px] lg:max-h-[610px]"
+                className="mx-auto block h-auto w-full max-h-[420px] object-contain object-bottom sm:max-h-[540px] lg:max-h-[620px]"
               />
             </picture>
-
-            {/* Bottom Blend Vignette so Portrait Merges Seamlessly into #050505 */}
-            <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-void via-void/80 to-transparent"
-              aria-hidden="true"
-            />
           </motion.div>
 
-          {/* FOREGROUND 12-COLUMN OVERLAY GRID (Left Identity Column + Right Callout & Stats Column) */}
-          <div className="relative z-30 mt-auto grid grid-cols-1 items-end gap-10 pt-4 lg:grid-cols-12 lg:gap-6 lg:pb-6">
+          {/* FOREGROUND 12-COLUMN OVERLAY GRID (Overlaps soft-faded bottom of portrait on mobile & desktop) */}
+          <div className="relative z-30 -mt-10 grid grid-cols-1 items-end gap-10 sm:-mt-14 lg:mt-auto lg:grid-cols-12 lg:gap-6 lg:pb-6">
             {/* LEFT COLUMN: "Hello, I'm ABOOBACKER" + Role + Bio + Freelance CTAs */}
             <motion.div
               initial={{ opacity: 0, x: -28 }}

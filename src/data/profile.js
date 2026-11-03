@@ -21,8 +21,8 @@ export const profile = {
   portfolioUrl: "https://aboobacker-portfolio.vercel.app",
   resumeUrl: "/resume.pdf",
   aboutImage: "/images/profile.jpg",
-  heroPortraitWebp: "/images/aboobacker_hero_studio.webp",
-  heroPortraitPng: "/images/aboobacker_hero_studio.png",
+  heroPortraitWebp: "/images/aboobacker_hero_studio.webp?v=3",
+  heroPortraitPng: "/images/aboobacker_hero_studio.png?v=3",
   socials: {
     github: "https://github.com/abucodess",
     linkedin: "https://www.linkedin.com/in/abubacker-ai",
