@@ -172,7 +172,7 @@ export default function Navbar({ isProjectPage = false, onExitProject }) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="WhatsApp"
-            className="hidden md:inline-flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-xs font-medium text-soft-white shadow-[0_0_24px_rgba(124,58,237,0.4)] transition-colors duration-200 hover:bg-violet-500 whitespace-nowrap shrink-0"
+            className="hidden md:inline-flex items-center gap-2 rounded-lg border border-violet-400/25 bg-violet-600 px-4 py-2 text-xs font-medium text-soft-white shadow-[0_6px_18px_rgba(10,3,22,0.85)] transition-colors duration-200 hover:bg-violet-500 whitespace-nowrap shrink-0"
           >
             <FaWhatsapp className="text-sm text-emerald-300" />
             <span>Let&apos;s Talk</span>

@@ -110,7 +110,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="WhatsApp"
-                className="group inline-flex w-fit items-center gap-3 rounded-xl bg-violet-600 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(124,58,237,0.45)] transition-all hover:bg-violet-500 whitespace-nowrap"
+                className="group inline-flex w-fit items-center gap-3 rounded-xl border border-violet-400/25 bg-violet-600 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-[0_8px_24px_rgba(12,4,26,0.85)] transition-all hover:bg-violet-500 whitespace-nowrap"
               >
                 <FaWhatsapp className="text-base text-emerald-300" />
                 <span>Message on WhatsApp</span>

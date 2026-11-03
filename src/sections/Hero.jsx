@@ -41,12 +41,12 @@ export default function Hero() {
       id="hero"
       className="relative overflow-hidden bg-void pt-16 pb-8 sm:pt-20 sm:pb-10 lg:min-h-[100svh] lg:pt-[76px] lg:pb-8 flex flex-col justify-between"
     >
-      {/* Dramatic Deep Midnight Purple Studio Backlight Behind "PORTFOLIO" & Portrait */}
+      {/* Deep Matte Midnight Purple Studio Backlight Behind "PORTFOLIO" & Portrait */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[44%] -z-0 h-[480px] w-[860px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-[44%] -z-0 h-[480px] w-[860px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[115px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(68, 14, 128, 0.55) 0%, rgba(32, 6, 64, 0.35) 48%, rgba(3, 1, 6, 0) 76%)",
+            "radial-gradient(circle, rgba(40, 10, 78, 0.42) 0%, rgba(20, 4, 42, 0.26) 48%, rgba(2, 1, 5, 0) 76%)",
         }}
         aria-hidden="true"
       />
@@ -142,10 +142,10 @@ export default function Hero() {
           >
             {/* Subtle Midnight Purple rim halo directly behind head & shoulders */}
             <div
-              className="absolute left-1/2 top-[44%] -z-10 h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[75px] sm:h-[340px] sm:w-[340px]"
+              className="absolute left-1/2 top-[44%] -z-10 h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px] sm:h-[340px] sm:w-[340px]"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(82, 18, 150, 0.5) 0%, rgba(40, 8, 78, 0.24) 58%, transparent 80%)",
+                  "radial-gradient(circle, rgba(46, 12, 90, 0.38) 0%, rgba(22, 5, 46, 0.2) 58%, transparent 80%)",
               }}
               aria-hidden="true"
             />
@@ -202,7 +202,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="WhatsApp"
-                  className="group inline-flex items-center gap-2 rounded-lg bg-violet-600 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-soft-white shadow-[0_0_30px_rgba(124,58,237,0.5)] transition-all duration-200 hover:bg-violet-500 whitespace-nowrap shrink-0"
+                  className="group inline-flex items-center gap-2 rounded-lg border border-violet-400/25 bg-violet-600 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-soft-white shadow-[0_8px_24px_rgba(14,4,30,0.85)] transition-all duration-200 hover:border-violet-400/45 hover:bg-violet-500 whitespace-nowrap shrink-0"
                 >
                   <FaWhatsapp className="text-sm text-emerald-300" />
                   <span>Let&apos;s Talk</span>

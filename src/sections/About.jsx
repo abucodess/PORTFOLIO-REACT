@@ -23,7 +23,7 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="glow-border relative overflow-hidden rounded-3xl border border-line bg-surface/70"
           >
-            <div className="absolute -right-16 -top-16 z-0 h-56 w-56 rounded-full bg-violet-600/20 blur-[80px]" />
+            <div className="absolute -right-16 -top-16 z-0 h-56 w-56 rounded-full bg-violet-900/35 blur-[80px]" />
 
             {/* Original photo */}
             <div className="relative aspect-[4/3.9] w-full overflow-hidden">
@@ -33,16 +33,16 @@ export default function About() {
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover object-top"
-                style={{ filter: "grayscale(0.35) contrast(1.08) saturate(1.1)" }}
+                style={{ filter: "grayscale(0.35) contrast(1.08) saturate(1.02)" }}
               />
               <div
                 className="absolute inset-0 mix-blend-color"
                 style={{
                   background:
-                    "linear-gradient(160deg, rgba(124,58,237,0.55), rgba(88,28,135,0.65))",
+                    "linear-gradient(160deg, rgba(46,16,92,0.6), rgba(22,6,46,0.72))",
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-violet-900/10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-violet-950/20" />
             </div>
 
             <div className="relative flex flex-col gap-5 p-7 pt-5">

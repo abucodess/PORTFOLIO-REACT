@@ -7,24 +7,24 @@
   --font-body: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Deep Midnight Purple Theme Palette */
-  --color-void: #030106;
-  --color-surface: #08020f;
-  --color-surface-2: #10051e;
-  --color-line: #1e0b36;
+  /* Ultra-Deep Matte Midnight Purple Theme Palette */
+  --color-void: #020105;
+  --color-surface: #06020c;
+  --color-surface-2: #0b0416;
+  --color-line: #160929;
 
-  --color-violet-950: #100320;
-  --color-violet-900: #1d0638;
-  --color-violet-800: #2b0952;
-  --color-violet-700: #3c096c;
-  --color-violet-600: #4a1082;
-  --color-violet-500: #5a189a;
-  --color-violet-400: #8338ec;
-  --color-violet-300: #b583ff;
+  --color-violet-950: #0a0314;
+  --color-violet-900: #120624;
+  --color-violet-800: #1b0936;
+  --color-violet-700: #260d4d;
+  --color-violet-600: #331266;
+  --color-violet-500: #431982;
+  --color-violet-400: #683ab7;
+  --color-violet-300: #8c66cc;
 
-  --color-soft-white: #f6f3ff;
-  --color-mist: #9a94ad;
-  --color-mist-dim: #665f7a;
+  --color-soft-white: #f4f1fa;
+  --color-mist: #948ea8;
+  --color-mist-dim: #615a75;
 
   --animate-marquee: marquee 28s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
@@ -165,14 +165,14 @@ body {
   color: transparent;
 }
 
-/* Deep Midnight Purple Backdrop Typography for PORTFOLIO */
+/* Deep Matte Midnight Purple Backdrop Typography for PORTFOLIO */
 .text-hero-backdrop {
   background: linear-gradient(
     180deg,
-    rgba(106, 27, 178, 0.92) 0%,
-    rgba(60, 9, 108, 0.78) 46%,
-    rgba(24, 4, 46, 0.25) 86%,
-    rgba(3, 1, 6, 0) 100%
+    rgba(62, 22, 118, 0.78) 0%,
+    rgba(34, 10, 68, 0.58) 48%,
+    rgba(14, 4, 28, 0.2) 86%,
+    rgba(2, 1, 5, 0) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -180,7 +180,7 @@ body {
 }
 
 .glass {
-  background: color-mix(in oklab, var(--color-surface) 80%, transparent);
+  background: color-mix(in oklab, var(--color-surface) 84%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-line);
@@ -195,16 +195,16 @@ body {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(90, 24, 154, 0.55) 35%, transparent 65%, rgba(131, 56, 236, 0.4));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(51, 18, 102, 0.45) 35%, transparent 65%, rgba(67, 25, 130, 0.32));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0.45;
+  opacity: 0.35;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 .glow-border:hover::before {
-  opacity: 1;
+  opacity: 0.85;
 }
 
 .section-pad {

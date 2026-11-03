@@ -13,7 +13,7 @@ export default function SceneBackground() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 85% 58% at 50% 0%, rgba(58, 12, 110, 0.42), transparent 70%), radial-gradient(ellipse 60% 50% at 88% 88%, rgba(36, 6, 72, 0.34), transparent 68%), radial-gradient(ellipse 55% 45% at 10% 52%, rgba(45, 9, 88, 0.25), transparent 62%)",
+              "radial-gradient(ellipse 85% 55% at 50% 0%, rgba(34, 9, 68, 0.34), transparent 70%), radial-gradient(ellipse 60% 50% at 88% 88%, rgba(22, 5, 46, 0.28), transparent 68%), radial-gradient(ellipse 55% 45% at 10% 52%, rgba(28, 7, 56, 0.2), transparent 62%)",
           }}
         />
 

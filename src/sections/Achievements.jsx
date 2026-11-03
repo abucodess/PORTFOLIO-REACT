@@ -23,10 +23,10 @@ const HEATMAP_LEVELS = Array.from({ length: WEEKS }, (_, w) =>
 
 const levelClass = [
   "bg-white/[0.04]",
-  "bg-violet-950/80",
-  "bg-violet-800/80",
+  "bg-violet-950/90",
+  "bg-violet-800/90",
   "bg-violet-600",
-  "bg-violet-400 shadow-[0_0_8px_rgba(192,132,252,0.7)]",
+  "bg-violet-400 shadow-[0_0_6px_rgba(104,58,183,0.45)]",
 ];
 
 export default function Achievements() {

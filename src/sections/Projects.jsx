@@ -267,7 +267,7 @@ export default function Projects({ onSelectProject }) {
             className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-35 blur-3xl"
             style={{
               background:
-                "radial-gradient(circle, rgba(131, 56, 236, 0.55) 0%, rgba(60, 9, 108, 0.2) 60%, transparent 100%)",
+                "radial-gradient(circle, rgba(51, 18, 102, 0.5) 0%, rgba(22, 6, 46, 0.25) 60%, transparent 100%)",
             }}
           />
 
@@ -323,7 +323,7 @@ export default function Projects({ onSelectProject }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="WhatsApp"
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-violet-600 px-6 py-4 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-soft-white shadow-[0_0_32px_rgba(131,56,236,0.45)] transition-all duration-200 hover:bg-violet-500 sm:w-auto lg:w-full"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-xl border border-violet-400/25 bg-violet-600 px-6 py-4 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-soft-white shadow-[0_8px_24px_rgba(12,4,26,0.85)] transition-all duration-200 hover:border-violet-400/45 hover:bg-violet-500 sm:w-auto lg:w-full"
               >
                 <FaWhatsapp className="text-base text-emerald-300" />
                 <span>Contact for Enquiry</span>

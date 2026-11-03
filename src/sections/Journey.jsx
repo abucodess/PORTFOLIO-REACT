@@ -213,10 +213,10 @@ export default function Journey() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col justify-between overflow-hidden rounded-2xl border border-violet-500/30 p-7 lg:col-span-3"
+            className="flex flex-col justify-between overflow-hidden rounded-2xl border border-white/12 p-7 lg:col-span-3"
             style={{
               background:
-                "radial-gradient(circle at 85% 20%, rgba(124, 58, 237, 0.42), transparent 60%), linear-gradient(165deg, #1a0b33 0%, #090612 65%, #050505 100%)",
+                "radial-gradient(circle at 85% 20%, rgba(44, 14, 88, 0.42), transparent 60%), linear-gradient(165deg, #100421 0%, #070210 65%, #030106 100%)",
             }}
           >
             <div>
