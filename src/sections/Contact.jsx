@@ -14,9 +14,12 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import { profile, getWhatsAppUrl } from "../data/profile";
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID =
+  import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_eb34hfi";
+const EMAILJS_TEMPLATE_ID =
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_83w87tl";
+const EMAILJS_PUBLIC_KEY =
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "3W3wjcBedEML5ogym";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -44,37 +47,30 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
 
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      const subject = encodeURIComponent(`Portfolio Inquiry from ${form.name}`);
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-      );
-      window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 4000);
-      return;
-    }
-
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
+          name: form.name,
+          user_name: form.name,
           from_email: form.email,
+          email: form.email,
+          user_email: form.email,
           reply_to: form.email,
           message: form.message,
+          title: `Portfolio Inquiry from ${form.name}`,
           to_name: "Aboobacker",
         },
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 4000);
+      setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
+      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
@@ -274,6 +270,17 @@ export default function Contact() {
                 <span>Send via WhatsApp</span>
               </a>
             </div>
+
+            {status === "sent" && (
+              <p className="mt-3 font-mono text-[11px] text-emerald-400">
+                ✓ Message delivered directly to Aboobacker&apos;s inbox.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mt-3 font-mono text-[11px] text-rose-400">
+                ✕ Could not send email right now — please click &quot;Send via WhatsApp&quot; above.
+              </p>
+            )}
           </motion.form>
         </div>
       </div>
