@@ -13,7 +13,7 @@ const links = [
   { id: "contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ isProjectPage = false, onExitProject }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -26,6 +26,12 @@ export default function Navbar() {
     const updateNavState = () => {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 24);
+
+      if (isProjectPage) {
+        setActive("projects");
+        ticking = false;
+        return;
+      }
 
       const now = performance.now();
       if (clickLockRef.current.id !== null && now < clickLockRef.current.until) {
@@ -86,21 +92,29 @@ export default function Navbar() {
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("portfolio:navigate", onCustomNavigate);
     };
-  }, []);
+  }, [isProjectPage]);
 
-  const scrollTo = useCallback((id) => {
-    setOpen(false);
-    const normalized = id === "hero" ? "" : id;
-    clickLockRef.current = { id: normalized, until: performance.now() + 900 };
-    setActive(normalized);
+  const scrollTo = useCallback(
+    (id) => {
+      setOpen(false);
+      const normalized = id === "hero" ? "" : id;
+      clickLockRef.current = { id: normalized, until: performance.now() + 900 };
+      setActive(normalized);
 
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      window.location.hash = id;
-    }
-  }, []);
+      if (isProjectPage && onExitProject) {
+        onExitProject(id);
+        return;
+      }
+
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.location.hash = id;
+      }
+    },
+    [isProjectPage, onExitProject]
+  );
 
   return (
     <header

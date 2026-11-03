@@ -80,14 +80,16 @@ export default function Hero() {
       </svg>
 
       <div className="container-px relative z-20 mx-auto flex max-w-7xl flex-col justify-between">
-        {/* TOP EDITORIAL MICRO-HEADER BAR (Single clean row on mobile & desktop) */}
+        {/* TOP EDITORIAL MICRO-HEADER BAR */}
         <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-3 font-mono text-[9.5px] tracking-[0.16em] uppercase sm:text-xs sm:tracking-[0.22em]">
           <div className="flex items-center gap-1.5 truncate">
             <span className="font-semibold text-violet-300">
               FRONTEND DEV
             </span>
             <span className="text-white/30">/</span>
-            <span className="truncate text-soft-white/80">REACT.JS CREATOR</span>
+            <span className="truncate text-soft-white/80">
+              SOFTWARE ENGINEER
+            </span>
           </div>
 
           <a
@@ -106,7 +108,7 @@ export default function Hero() {
 
         {/* MAIN EDITORIAL STAGE: GIANT "PORTFOLIO" BACKDROP + STUDIO PORTRAIT + LEFT/RIGHT OVERLAYS */}
         <div className="relative mt-4 flex min-h-[540px] flex-col justify-between sm:min-h-[620px] lg:min-h-[680px]">
-          {/* MONUMENTAL CONDENSED "PORTFOLIO" BACKDROP TEXT (Layered behind portrait) */}
+          {/* MONUMENTAL CONDENSED "PORTFOLIO" BACKDROP TEXT */}
           <div
             className="pointer-events-none relative z-10 select-none overflow-hidden text-center"
             aria-hidden="true"
@@ -121,7 +123,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* CENTER STUDIO PORTRAIT OF ABOOBACKER (Overlapping the giant PORTFOLIO letters with seamless alpha mask, zero square box) */}
+          {/* CENTER STUDIO PORTRAIT OF ABOOBACKER */}
           <motion.div
             initial={{ opacity: 0, y: 36, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -150,7 +152,7 @@ export default function Hero() {
               <source srcSet={profile.heroPortraitWebp} type="image/webp" />
               <img
                 src={profile.heroPortraitPng}
-                alt="Aboobacker — Frontend Developer & React.js Creator"
+                alt="Aboobacker — Frontend Developer & Software Engineer"
                 width="960"
                 height="820"
                 fetchPriority="high"
@@ -161,9 +163,9 @@ export default function Hero() {
             </picture>
           </motion.div>
 
-          {/* FOREGROUND 12-COLUMN OVERLAY GRID (Overlaps soft-faded bottom of portrait on mobile & desktop) */}
+          {/* FOREGROUND 12-COLUMN OVERLAY GRID */}
           <div className="relative z-30 -mt-10 grid grid-cols-1 items-end gap-10 sm:-mt-14 lg:mt-auto lg:grid-cols-12 lg:gap-6 lg:pb-6">
-            {/* LEFT COLUMN: "Hello, I'm ABOOBACKER" + Role + Bio + Freelance CTAs */}
+            {/* LEFT COLUMN: "Hello, I'm ABOOBACKER." + Role + Primary CTAs */}
             <motion.div
               initial={{ opacity: 0, x: -28 }}
               animate={{ opacity: 1, x: 0 }}
@@ -180,17 +182,7 @@ export default function Hero() {
               </h1>
 
               <p className="mt-3 font-condensed text-lg font-bold uppercase tracking-[0.08em] text-violet-400 sm:text-xl">
-                FRONTEND DEVELOPER &amp; REACT.JS CREATOR
-              </p>
-
-              <p className="mt-3 max-w-sm text-xs leading-relaxed text-mist sm:text-[13.5px]">
-                I engineer fast, high-converting e-commerce platforms and
-                responsive client web applications with{" "}
-                <span className="text-soft-white">
-                  React.js, Redux Toolkit, TypeScript, and Tailwind CSS
-                </span>{" "}
-                — combining clean architecture with smooth interactions that
-                drive real business results.
+                FRONTEND DEVELOPER &amp; SOFTWARE ENGINEER
               </p>
 
               {/* Primary Freelance & Portfolio CTAs */}
@@ -216,16 +208,6 @@ export default function Hero() {
                   <span>Selected Work</span>
                   <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
                 </button>
-
-                <a
-                  href={profile.resumeUrl}
-                  download="Aboobacker_Frontend_Developer_Resume.pdf"
-                  data-cursor="Resume"
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-4 py-3 font-mono text-[11px] text-mist transition-colors duration-200 hover:border-white/30 hover:text-soft-white whitespace-nowrap shrink-0"
-                >
-                  <FiDownload size={13} />
-                  <span>Resume</span>
-                </a>
               </div>
 
               {/* Bottom-left Worldwide Availability Tag */}
@@ -238,24 +220,47 @@ export default function Hero() {
             {/* CENTER SPACER FOR PORTRAIT ON DESKTOP */}
             <div className="hidden lg:col-span-3 lg:block" />
 
-            {/* RIGHT COLUMN: Floating Star Callout + Stacked Metrics (Matches reference right side) */}
+            {/* RIGHT COLUMN: Interactive Star-to-Download Resume Badge + Stacked Metrics */}
             <motion.div
               initial={{ opacity: 0, x: 28 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.75, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col justify-between gap-8 lg:col-span-4 lg:items-end"
             >
-              {/* Floating Star Callout Badge ("Turning ideas into powerful digital experiences.") */}
-              <div className="flex items-center gap-4 self-start lg:mr-4 lg:mb-6 lg:self-end">
-                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/[0.03] backdrop-blur-md">
-                  <span className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-violet-400/50" />
-                  <span className="text-base text-soft-white">✦</span>
+              {/* Interactive Star Badge -> Morphs smoothly into Download Resume on Hover */}
+              <a
+                href={profile.resumeUrl}
+                download="Aboobacker_Frontend_Developer_Resume.pdf"
+                data-cursor="Resume"
+                aria-label="Download Aboobacker Resume PDF"
+                className="group flex items-center gap-4 self-start rounded-2xl p-1.5 -m-1.5 transition-colors lg:mr-4 lg:mb-6 lg:self-end"
+              >
+                <div className="relative flex h-13 w-13 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/[0.03] backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:border-violet-400 group-hover:bg-violet-600/35 group-hover:shadow-[0_0_32px_rgba(131,56,236,0.65)]">
+                  <span className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-violet-400/55 transition-colors duration-500 group-hover:border-white/70" />
+
+                  {/* Default ✦ Star (smoothly rotates, scales down & fades out on hover) */}
+                  <span className=" absolute text-base text-soft-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:rotate-90 group-hover:scale-0 group-hover:opacity-0">
+                    ✦
+                  </span>
+
+                  {/* Hover Download Icon (smoothly rises, scales up & fades in on hover) */}
+                  <FiDownload
+                    size={18}
+                    className="absolute translate-y-2 scale-50 text-white opacity-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100"
+                  />
                 </div>
-                <p className="max-w-[185px] text-xs leading-relaxed text-soft-white/90">
-                  Turning ideas into powerful, conversion-ready digital
-                  experiences.
-                </p>
-              </div>
+
+                <div className="max-w-[195px]">
+                  <p className="text-xs leading-relaxed text-soft-white/90 transition-colors duration-300 group-hover:text-white">
+                    Turning ideas into powerful, conversion-ready digital
+                    experiences.
+                  </p>
+                  <span className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-violet-300 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-emerald-300">
+                    <span>Download Resume</span>
+                    <span className="opacity-60 group-hover:opacity-100">↓</span>
+                  </span>
+                </div>
+              </a>
 
               {/* Stacked KPI Counters with Hairline Dividers */}
               <div className="w-full max-w-[260px] divide-y divide-white/12 border-y border-white/12">
