@@ -127,7 +127,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="font-condensed text-[clamp(4.8rem,19.5vw,16.5rem)] font-extrabold uppercase leading-[0.8] tracking-[-0.03em] text-hero-backdrop"
+              className="font-condensed text-[clamp(5.6rem,21.5vw,18.8rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.025em] text-hero-backdrop"
             >
               PORTFOLIO
             </motion.div>
