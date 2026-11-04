@@ -41,53 +41,46 @@ export default function Hero() {
       id="hero"
       className="relative overflow-hidden bg-void pt-16 pb-8 sm:pt-20 sm:pb-10 lg:min-h-[100svh] lg:pt-[76px] lg:pb-8 flex flex-col justify-between"
     >
-      {/* Deep Matte Midnight Purple Studio Backlight Behind "PORTFOLIO" & Portrait */}
+      {/* Deep Matte Midnight Purple Studio Backlight Behind "PORTFOLIO" & Portrait (Zero-blur radial gradient for locked 60fps) */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[44%] -z-0 h-[480px] w-[860px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[115px]"
+        className="pointer-events-none absolute left-1/2 top-[44%] -z-0 h-[560px] w-[960px] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(40, 10, 78, 0.42) 0%, rgba(20, 4, 42, 0.26) 48%, rgba(2, 1, 5, 0) 76%)",
+            "radial-gradient(ellipse at center, rgba(40, 10, 78, 0.36) 0%, rgba(20, 4, 42, 0.2) 42%, rgba(2, 1, 5, 0) 72%)",
         }}
         aria-hidden="true"
       />
 
-      {/* Lightweight Architectural White Light Lines Inside Hero Stage */}
+      {/* Lightweight Static Architectural White Light Lines Inside Hero Stage */}
       <svg
         viewBox="0 0 1440 800"
         fill="none"
-        className="pointer-events-none absolute inset-0 z-10 h-full w-full"
+        className="pointer-events-none absolute inset-0 z-10 h-full w-full opacity-55"
         aria-hidden="true"
       >
         <defs>
           <linearGradient id="heroWhiteLine1" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-            <stop offset="50%" stopColor="rgba(255,255,255,0.5)" />
-            <stop offset="100%" stopColor="rgba(181,131,255,0)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.22)" />
+            <stop offset="100%" stopColor="rgba(140,102,204,0)" />
           </linearGradient>
           <linearGradient id="heroWhiteLine2" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-            <stop offset="50%" stopColor="rgba(255,255,255,0.35)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.16)" />
             <stop offset="100%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
         </defs>
 
-        {/* Sweeping white light curve from left toward right callout */}
         <path
           d="M 80 560 C 380 500, 740 280, 1180 325"
           stroke="url(#heroWhiteLine1)"
-          strokeWidth="1.1"
-          strokeDasharray="420 1980"
-          className="animate-trace-dash opacity-80"
+          strokeWidth="1"
         />
 
-        {/* Secondary white light arc across upper stage */}
         <path
           d="M 220 110 Q 720 290 1320 150"
           stroke="url(#heroWhiteLine2)"
           strokeWidth="1"
-          strokeDasharray="360 2040"
-          className="animate-trace-dash opacity-65"
-          style={{ animationDelay: "-5s" }}
         />
       </svg>
 
@@ -124,9 +117,9 @@ export default function Hero() {
             aria-hidden="true"
           >
             <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
               className="font-condensed text-[clamp(5.6rem,21.5vw,18.8rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.025em] text-hero-backdrop"
             >
               PORTFOLIO
@@ -135,17 +128,17 @@ export default function Hero() {
 
           {/* CENTER STUDIO PORTRAIT OF ABOOBACKER */}
           <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="pointer-events-none relative z-20 -mt-10 mx-auto flex w-full max-w-[380px] justify-center sm:-mt-20 sm:max-w-[460px] lg:absolute lg:inset-x-0 lg:bottom-0 lg:top-4 lg:mt-0 lg:max-w-[540px] xl:max-w-[580px] lg:items-end"
           >
-            {/* Subtle Midnight Purple rim halo directly behind head & shoulders */}
+            {/* Subtle Midnight Purple rim halo directly behind head & shoulders (zero-blur radial gradient) */}
             <div
-              className="absolute left-1/2 top-[44%] -z-10 h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px] sm:h-[340px] sm:w-[340px]"
+              className="absolute left-1/2 top-[44%] -z-10 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full sm:h-[420px] sm:w-[420px]"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(46, 12, 90, 0.38) 0%, rgba(22, 5, 46, 0.2) 58%, transparent 80%)",
+                  "radial-gradient(circle, rgba(46, 12, 90, 0.34) 0%, rgba(22, 5, 46, 0.16) 48%, transparent 72%)",
               }}
               aria-hidden="true"
             />
@@ -177,9 +170,9 @@ export default function Hero() {
           <div className="relative z-30 -mt-6 grid grid-cols-1 items-end gap-7 sm:-mt-10 lg:mt-auto lg:grid-cols-12 lg:gap-6 lg:pb-2">
             {/* LEFT COLUMN: "Hello, I'm ABOOBACKER." + Role + Primary CTAs */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-start lg:col-span-5"
             >
               <p className="font-serif-editorial text-xl italic text-soft-white/90 sm:text-2xl lg:text-3xl">
@@ -213,7 +206,7 @@ export default function Hero() {
                   type="button"
                   data-cursor="Projects"
                   onClick={() => scrollTo("projects")}
-                  className="group inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-3 text-xs font-semibold uppercase tracking-wider text-soft-white backdrop-blur-md transition-colors duration-200 hover:border-violet-400/60 hover:bg-violet-500/15 whitespace-nowrap shrink-0"
+                  className="group inline-flex items-center gap-2 rounded-lg border border-white/15 bg-[#080312]/90 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-soft-white transition-colors duration-200 hover:border-violet-400/60 hover:bg-violet-500/15 whitespace-nowrap shrink-0"
                 >
                   <span>Previous Works</span>
                   <FiArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -232,9 +225,9 @@ export default function Hero() {
 
             {/* RIGHT COLUMN: Compact, Mobile-Responsive Resume Card + KPI Stats */}
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
               className="flex w-full flex-col gap-2.5 lg:col-span-4 lg:ml-auto lg:max-w-[268px] xl:max-w-[280px]"
             >
               {/* Interactive Star Badge -> Morphs Smoothly Into Download Resume on Hover */}
@@ -243,7 +236,7 @@ export default function Hero() {
                 download="Aboobacker_Frontend_Developer_Resume.pdf"
                 data-cursor="Resume"
                 aria-label="Download Aboobacker Resume PDF"
-                className="group relative flex w-full items-center gap-3 overflow-hidden rounded-xl border border-white/12 bg-[#07020f]/85 px-3 py-2.5 backdrop-blur-md transition-all duration-300 hover:border-violet-400/50 hover:bg-[#0b0318]/90"
+                className="group relative flex w-full items-center gap-3 overflow-hidden rounded-xl border border-white/12 bg-[#07020f]/92 px-3 py-2.5 transition-all duration-300 hover:border-violet-400/50 hover:bg-[#0b0318]"
               >
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
@@ -275,7 +268,7 @@ export default function Hero() {
               </a>
 
               {/* Responsive KPI Counters: 3-Column Symmetrical Grid on Mobile, Compact Stacked Card on Desktop */}
-              <div className="grid w-full grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-xl border border-white/12 bg-[#07020f]/85 backdrop-blur-md lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
+              <div className="grid w-full grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-xl border border-white/12 bg-[#07020f]/92 lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
                 {HERO_STATS.map((stat) => (
                   <div
                     key={stat.label}

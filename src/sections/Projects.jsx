@@ -43,7 +43,7 @@ export default function Projects({ onSelectProject }) {
   return (
     <section
       id="projects"
-      className="section-pad relative z-10 border-t border-white/10"
+      className="section-pad cv-auto relative z-10 border-t border-white/10"
     >
       <div className="container-px mx-auto max-w-7xl">
         {/* EDITORIAL SECTION HEADER BAR */}
@@ -78,12 +78,12 @@ export default function Projects({ onSelectProject }) {
           {projects.map((project, i) => (
             <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 32 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.65,
-                delay: i * 0.1,
+                duration: 0.55,
+                delay: i * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
               onClick={() => handleOpenProject(project.slug)}
@@ -177,12 +177,12 @@ export default function Projects({ onSelectProject }) {
               {clientReviews.map((item, idx) => (
                 <motion.blockquote
                   key={item.id}
-                  initial={{ opacity: 0, y: 22 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 0.55,
-                    delay: idx * 0.1,
+                    duration: 0.5,
+                    delay: idx * 0.08,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   onClick={() => handleOpenProject(item.slug)}
@@ -253,10 +253,10 @@ export default function Projects({ onSelectProject }) {
 
         {/* CUSTOM WEBSITES & WEB APPS ENQUIRY BANNER */}
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65, delay: 0.15 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
           className="relative mt-14 overflow-hidden rounded-3xl border border-white/15 bg-surface/80 p-7 sm:p-10 lg:p-12"
         >
           {/* Top & bottom architectural white hairlines + Midnight Purple aura */}
@@ -264,10 +264,10 @@ export default function Projects({ onSelectProject }) {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-400/35 to-transparent" />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-35 blur-3xl"
+            className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-45"
             style={{
               background:
-                "radial-gradient(circle, rgba(51, 18, 102, 0.5) 0%, rgba(22, 6, 46, 0.25) 60%, transparent 100%)",
+                "radial-gradient(circle, rgba(51, 18, 102, 0.5) 0%, rgba(22, 6, 46, 0.22) 55%, transparent 78%)",
             }}
           />
 

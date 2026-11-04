@@ -56,49 +56,22 @@ export default function SceneBackground() {
             />
           </div>
 
-          {/* Continuous Winding White Thread (Pure CSS stroke-dashoffset, 0% JS CPU usage) */}
+          {/* Static Architectural Guide Curves (Zero main-thread repaint cost) */}
           <svg
             viewBox="0 0 1440 900"
             fill="none"
             preserveAspectRatio="none"
-            className="absolute inset-0 h-full w-full opacity-55"
+            className="absolute inset-0 h-full w-full opacity-45"
           >
-            <defs>
-              <linearGradient id="midnightWhiteLine" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.65)" />
-                <stop offset="100%" stopColor="rgba(181,131,255,0)" />
-              </linearGradient>
-            </defs>
-
-            {/* Base faint guide curve */}
             <path
               d="M -60 140 C 420 360, 980 60, 1500 260"
-              stroke="rgba(255,255,255,0.04)"
+              stroke="rgba(255,255,255,0.045)"
               strokeWidth="1"
             />
-            {/* Traveling white light pulse along curve */}
-            <path
-              d="M -60 140 C 420 360, 980 60, 1500 260"
-              stroke="url(#midnightWhiteLine)"
-              strokeWidth="1.15"
-              strokeDasharray="360 2040"
-              className="animate-trace-dash"
-            />
-
-            {/* Lower base faint guide curve */}
             <path
               d="M 1500 720 C 960 500, 480 820, -60 620"
               stroke="rgba(255,255,255,0.035)"
               strokeWidth="1"
-            />
-            <path
-              d="M 1500 720 C 960 500, 480 820, -60 620"
-              stroke="url(#midnightWhiteLine)"
-              strokeWidth="1"
-              strokeDasharray="320 2080"
-              className="animate-trace-dash"
-              style={{ animationDelay: "-7s" }}
             />
           </svg>
         </div>

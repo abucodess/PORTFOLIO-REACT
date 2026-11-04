@@ -77,7 +77,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-pad relative z-10 border-t border-white/10"
+      className="section-pad cv-auto relative z-10 border-t border-white/10"
     >
       <div className="container-px mx-auto max-w-7xl">
         {/* 12-COLUMN EDITORIAL CONTACT SECTION (Matches "LET'S WORK TOGETHER ✦" in reference) */}

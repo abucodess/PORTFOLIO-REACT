@@ -6,83 +6,48 @@ export default function ParticleField() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
 
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let raf = 0;
-    let isVisible = true;
-    let width = 0;
-    let height = 0;
-    let particles = [];
-
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
+    const drawStaticStarfield = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      // Keep particle count small for locked 60fps performance
-      const count = width < 768 ? 14 : 28;
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
-        r: Math.random() * 1.4 + 0.5,
-        alpha: Math.random() * 0.35 + 0.15,
-      }));
-    }
-
-    function step() {
-      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
+      const count = width < 768 ? 16 : 28;
+      for (let i = 0; i < count; i++) {
+        // Deterministic pseudo-random distribution so resize is instant and stable
+        const seedX = Math.sin((i + 1) * 12.9898) * 43758.5453;
+        const seedY = Math.sin((i + 1) * 78.233) * 43758.5453;
+        const rx = seedX - Math.floor(seedX);
+        const ry = seedY - Math.floor(seedY);
 
-        if (p.x < 0) p.x = width;
-        else if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        else if (p.y > height) p.y = 0;
+        const x = rx * width;
+        const y = ry * height;
+        const r = (i % 3) * 0.45 + 0.55;
+        const alpha = (i % 4) * 0.07 + 0.14;
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(192, 132, 252, ${p.alpha})`;
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle =
+          i % 5 === 0
+            ? `rgba(244, 241, 250, ${alpha})`
+            : `rgba(140, 102, 204, ${alpha})`;
         ctx.fill();
-      }
-
-      raf = requestAnimationFrame(step);
-    }
-
-    const onVisibilityChange = () => {
-      if (document.hidden) {
-        isVisible = false;
-        cancelAnimationFrame(raf);
-      } else {
-        isVisible = true;
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(step);
       }
     };
 
-    resize();
-    raf = requestAnimationFrame(step);
-
-    window.addEventListener("resize", resize, { passive: true });
-    document.addEventListener("visibilitychange", onVisibilityChange);
+    drawStaticStarfield();
+    window.addEventListener("resize", drawStaticStarfield, { passive: true });
 
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("resize", drawStaticStarfield);
     };
   }, []);
 
@@ -94,3 +59,4 @@ export default function ParticleField() {
     />
   );
 }
+

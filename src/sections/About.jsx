@@ -23,7 +23,13 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="glow-border relative overflow-hidden rounded-3xl border border-line bg-surface/70"
           >
-            <div className="absolute -right-16 -top-16 z-0 h-56 w-56 rounded-full bg-violet-900/35 blur-[80px]" />
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 z-0 h-64 w-64 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(28, 9, 58, 0.45) 0%, rgba(18, 6, 36, 0.2) 52%, transparent 75%)",
+              }}
+            />
 
             {/* Original photo */}
             <div className="relative aspect-[4/3.9] w-full overflow-hidden">

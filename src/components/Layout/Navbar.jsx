@@ -21,34 +21,45 @@ export default function Navbar({ isProjectPage = false, onExitProject }) {
   const whatsappHref = getWhatsAppUrl();
 
   useEffect(() => {
-    let ticking = false;
+    const scrollState = { ticking: false };
+
+    const setScrolledIfChanged = (next) => {
+      setScrolled((prev) => (prev === next ? prev : next));
+    };
+
+    const setActiveIfChanged = (next) => {
+      setActive((prev) => (prev === next ? prev : next));
+    };
 
     const updateNavState = () => {
       const scrollY = window.scrollY;
-      setScrolled(scrollY > 24);
+      setScrolledIfChanged(scrollY > 24);
 
       if (isProjectPage) {
-        setActive("projects");
-        ticking = false;
+        setActiveIfChanged("projects");
+        scrollState.ticking = false;
         return;
       }
 
       const now = performance.now();
       if (clickLockRef.current.id !== null && now < clickLockRef.current.until) {
-        setActive(clickLockRef.current.id);
-        ticking = false;
+        setActiveIfChanged(clickLockRef.current.id);
+        scrollState.ticking = false;
         return;
       }
 
       if (scrollY < window.innerHeight * 0.35) {
-        setActive("");
-        ticking = false;
+        setActiveIfChanged("");
+        scrollState.ticking = false;
         return;
       }
 
-      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 60) {
-        setActive(links[links.length - 1].id);
-        ticking = false;
+      if (
+        window.innerHeight + scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        setActiveIfChanged(links[links.length - 1].id);
+        scrollState.ticking = false;
         return;
       }
 
@@ -64,14 +75,14 @@ export default function Navbar({ isProjectPage = false, onExitProject }) {
         }
       }
 
-      setActive(currentId);
-      ticking = false;
+      setActiveIfChanged(currentId);
+      scrollState.ticking = false;
     };
 
     const onScroll = () => {
-      if (!ticking) {
+      if (!scrollState.ticking) {
         window.requestAnimationFrame(updateNavState);
-        ticking = true;
+        scrollState.ticking = true;
       }
     };
 
@@ -80,7 +91,7 @@ export default function Navbar({ isProjectPage = false, onExitProject }) {
       if (!targetId) return;
       const normalized = targetId === "hero" ? "" : targetId;
       clickLockRef.current = { id: normalized, until: performance.now() + 900 };
-      setActive(normalized);
+      setActiveIfChanged(normalized);
     };
 
     updateNavState();

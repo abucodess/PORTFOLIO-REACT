@@ -50,7 +50,7 @@ export default function Journey() {
   return (
     <section
       id="journey"
-      className="section-pad relative z-10 border-t border-white/10"
+      className="section-pad cv-auto relative z-10 border-t border-white/10"
     >
       <div className="container-px mx-auto max-w-7xl">
         {/* 3-COLUMN ARCHITECTURAL GRID MATCHING REFERENCE IMAGE:
